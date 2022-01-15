@@ -45,27 +45,31 @@ class Solution:
 
     def possibleToStamp(self, grid: List[List[int]], stampHeight: int, stampWidth: int) -> bool:
         m, n = len(grid), len(grid[0])
-        s, t = min(m, n), max(m, n)
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j] == 1:
-                    upper = i
-                    down = m - i - 1
-                    left = j
-                    right = n - j - 1
-                    for k in [upper, down, left, right]:
-                        if k == 0:
-                            continue
-                        if t > k > s:
-                            t = k
-                        elif s > k:
-                            t = s
-                            s = k
-        h, w = min(stampHeight, stampHeight), max(stampHeight, stampHeight)
-        if h <= s and w <= t:
-            return True
-        else:
-            return False
+        sum = [[0] * (n + 1) for _ in range(m + 1)]
+        diff = [[0] * (n + 1) for _ in range(m + 1)]
+        for i, row in enumerate(grid):
+            for j, v in enumerate(row):  # grid 的二维前缀和
+                sum[i + 1][j + 1] = sum[i + 1][j] + sum[i][j + 1] - sum[i][j] + v
+
+        for i, row in enumerate(grid):
+            for j, v in enumerate(row):
+                if v == 0:
+                    x, y = i + stampHeight, j + stampWidth  # 注意这是矩形右下角横纵坐标都 +1 后的位置
+                    if x <= m and y <= n and sum[x][y] - sum[x][j] - sum[i][y] + sum[i][j] == 0:
+                        diff[i][j] += 1
+                        diff[i][y] -= 1
+                        diff[x][j] -= 1
+                        diff[x][y] += 1  # 更新二维差分
+
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        for i, row in enumerate(grid):
+            for j, v in enumerate(row):
+                dp[i + 1][j + 1] = dp[i+1][j] + dp[i][j + 1] - dp[i][j] + diff[i][j]
+                if dp[i + 1][j + 1] == 0 and v == 0:
+                    return False
+        for i in range(n+1):
+            print(dp[i])
+        return True
 
 
 if __name__ == '__main__':
@@ -76,7 +80,7 @@ if __name__ == '__main__':
     grid = [[1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]]
     stampHeight = 4
     stampWidth = 3
-    ans = sol.possibleToStamp(grid, stampWidth, stampHeight)
+    ans = sol.possibleToStamp(grid, stampHeight, stampWidth)
     print(ans)
 
     # words = ["lc", "cl", "gg"]

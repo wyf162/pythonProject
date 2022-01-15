@@ -71,15 +71,33 @@ class Solution:
                     s.remove(c)
         return ans
 
+    def word_count(self, start_words, target_words):
+        s = set()
+        for word in start_words:
+            mask = 0
+            for c in word:
+                mask = mask | 1 << ord(c)-ord('a')
+            s.add(mask)
+        ans = 0
+        for word in target_words:
+            mask = 0
+            for c in word:
+                mask = mask | 1 << ord(c)-ord('a')
+            for c in word:
+                origin = mask ^ 1 << ord(c)-ord('a')
+                if origin in s:
+                    ans += 1
+                    break
+        return ans
 
 if __name__ == '__main__':
     sol = Solution()
     # startWords = ["ant", "act", "tack"]
     # targetWords = ["tack", "act", "acti"]
-    # startWords = ["g", "vf", "ylpuk", "nyf", "gdj", "j", "fyqzg", "sizec"]
-    # targetWords = ["r", "am", "jg", "umhjo", "fov", "lujy", "b", "uz", "y"]
-    startWords = ["a"]
-    targetWords =["ab","ba"]
+    startWords = ["g", "vf", "ylpuk", "nyf", "gdj", "j", "fyqzg", "sizec"]
+    targetWords = ["r", "am", "jg", "umhjo", "fov", "lujy", "b", "uz", "y"]
+    # startWords = ["a"]
+    # targetWords =["ab","ba"]
 
     ans = sol.wordCount(startWords, targetWords)
     print(ans)
