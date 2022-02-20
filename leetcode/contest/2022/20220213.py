@@ -5,6 +5,7 @@
 from typing import List
 import bisect
 
+
 class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
         if len(nums) < 2:
@@ -28,29 +29,28 @@ class Solution:
         if keys_0[-1] != keys_1[-1]:
             ans = n - hst_0.get(keys_0[-1]) - hst_1.get(keys_1[-1])
         else:
-            if len(keys_1)>1:
+            if len(keys_1) > 1:
                 ans = n - hst_0.get(keys_0[-1]) - hst_1.get(keys_1[-2])
             else:
                 ans = n - hst_0.get(keys_0[-1])
-            if len(keys_0)>1:
+            if len(keys_0) > 1:
                 ans = min(ans, n - hst_0.get(keys_0[-2]) - hst_1.get(keys_1[-1]))
             else:
                 ans = min(ans, n - hst_1.get(keys_1[-1]))
         return ans
 
-
     def minimumRemoval(self, beans: List[int]) -> int:
         beans.sort()
         prefix_sum = [0]
         for bean in beans:
-            prefix_sum.append(prefix_sum[-1]+bean)
+            prefix_sum.append(prefix_sum[-1] + bean)
         keys = set(beans)
         n = len(beans)
         ans = prefix_sum[-1]
         for k in keys:
             left = bisect.bisect_left(beans, k)
             right = bisect.bisect_right(beans, k)
-            tmp = prefix_sum[left]+prefix_sum[-1]-prefix_sum[right]-(n-right)*k
+            tmp = prefix_sum[left] + prefix_sum[-1] - prefix_sum[right] - (n - right) * k
             ans = min(ans, tmp)
         return ans
 
@@ -68,12 +68,25 @@ class Solution:
                     ans = max(ans, f[s])
         return ans
 
+    def maximum_and_sum(self, nums: List[int], num_slots: int) -> int:
+        n = len(nums)
+        f = [0] * (1 << (num_slots * 2))
+        for i, fi in enumerate(f):
+            c = i.bit_count()
+            if c >= n:
+                continue
+            for j in range(num_slots * 2):
+                if (i & (1 << j)) == 0:
+                    s = i | (1 << j)
+                    f[s] = max(f[s], fi + (j // 2 + 1) & nums[c])
+        return max(f)
+
 
 if __name__ == '__main__':
     sol = Solution()
     nums = [1, 2, 3, 4, 5, 6]
     numSlots = 3
-    ans = sol.maximumANDSum(nums, numSlots)
+    ans = sol.maximum_and_sum(nums, numSlots)
     print(ans)
 
     # beans = [4,1,6,5]
