@@ -24,8 +24,8 @@ def main(n, l, xs):
 if __name__ == "__main__":
     # data = main(3,5,[18,9,21])
     # print(data)
-    # sys.stdin = open('input.txt')
-    # sys.stdout = open('output.txt', 'w+')
+    sys.stdin = open('input.txt')
+    sys.stdout = open('output.txt', 'w+')
     test_case_number = int(sys.stdin.readline())
     for i in range(test_case_number):
         first_line = sys.stdin.readline()
