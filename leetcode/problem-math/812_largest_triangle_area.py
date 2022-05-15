@@ -26,7 +26,7 @@ class Solution:
         p = (a + b + c) / 2
         print(a, b, c, p)
         t = p * (p - a) * (p - b) * (p - c)
-        if t>0:
+        if t > 0:
             s = math.sqrt(t)
             return s
         else:
