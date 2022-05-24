@@ -8,7 +8,7 @@ import bisect
 from sortedcontainers import SortedDict
 
 
-class MyCalendar:
+class MyCalendar2:
 
     def __init__(self):
         self.end_start = SortedDict()
@@ -24,6 +24,7 @@ class MyCalendar:
 
 class Node:
     __slots__ = 'start', 'end', 'left', 'right'
+
     def __init__(self, start, end):
         self.start = start
         self.end = end
@@ -44,7 +45,7 @@ class Node:
             return False
 
 
-class MyCalendar2(object):
+class MyCalendar(object):
     def __init__(self):
         self.root = None
 
@@ -59,7 +60,7 @@ if __name__ == '__main__':
     my_calendar = MyCalendar()
     ret = my_calendar.book(10, 20)
     print(ret)
-    ret = my_calendar.book(15, 25)
+    ret = my_calendar.book(80, 100)
     print(ret)
-    ret = my_calendar.book(20, 30)
+    ret = my_calendar.book(30, 40)
     print(ret)
