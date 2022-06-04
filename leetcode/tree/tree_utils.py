@@ -62,3 +62,7 @@ def treeNodeToString(root):
         queue.append(node.left)
         queue.append(node.right)
     return "[" + output[:-2] + "]"
+
+
+treenode_to_string = treeNodeToString
+string_to_treenode = stringToTreeNode
