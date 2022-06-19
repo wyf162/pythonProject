@@ -3,6 +3,7 @@
 # @Author: yefei.wang
 # @File: week-297-20220612.py
 from collections import defaultdict
+from itertools import product
 from typing import List
 
 
@@ -68,8 +69,10 @@ class Solution:
 
     def distinctNames(self, ideas: List[str]) -> int:
         d = defaultdict(set)
-        for name in ideas: d[name[0]].add(name[1:])
+        for name in ideas:
+            d[name[0]].add(name[1:])
         return sum((len(d[a]) - len(d[a] & d[b])) * (len(d[b]) - len(d[a] & d[b])) * 2 for a, b in product(d, repeat=2) if ord(a) < ord(b))
+
 
 if __name__ == '__main__':
     sol = Solution()
