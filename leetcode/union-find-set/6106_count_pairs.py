@@ -34,3 +34,10 @@ class Solution:
             ans += vals[i] * (n - presum[i])  # 数学关系
 
         return ans
+
+
+if __name__ == '__main__':
+    n = 7
+    edges = [[0, 2], [0, 5], [2, 4], [1, 6], [5, 4]]
+    ret = Solution().countPairs(n, edges)
+    print(ret)
