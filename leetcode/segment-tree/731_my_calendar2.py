@@ -11,8 +11,6 @@ class Node:
         self.max = max
 
 
-
-
 class MyCalendar:
     def __init__(self):
         self.n = int(1e9)
