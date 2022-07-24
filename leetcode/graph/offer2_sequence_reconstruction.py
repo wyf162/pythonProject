@@ -2,7 +2,8 @@
 # @Time: 2022/7/23 10:07
 # @Author: yefei.wang
 # @File: offer2_sequence_reconstruction.py
-
+from collections import deque
+from itertools import pairwise
 from typing import List
 
 
