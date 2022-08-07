@@ -104,7 +104,7 @@ class Solution:
 
         return "".join(ans)
 
-    def cout_airs(self, nums: List[int], k: int) -> int:
+    def cout_pairs(self, nums: List[int], k: int) -> int:
         s = 0
         t = 0
         for num in nums:

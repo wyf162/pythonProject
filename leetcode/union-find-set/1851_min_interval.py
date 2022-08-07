@@ -17,24 +17,24 @@ class Solution:
             qs.append((q, i))
         qs.sort()
 
-        fa = [_ for _ in range(m+1)]
+        fa = [_ for _ in range(m + 1)]
 
         def find(x):
-            if fa[x]!=x:
-                fa[x]=find(fa[x])
+            if fa[x] != x:
+                fa[x] = find(fa[x])
             return fa[x]
 
-        ans = [-1]*m
+        ans = [-1] * m
 
         for _, p in enumerate(intervals):
-            l, r = p[0],  p[1]
-            length = r-l+1
-            i = bisect.bisect_left(qs, l, key=lambda x:x[0])
+            l, r = p[0], p[1]
+            length = r - l + 1
+            i = bisect.bisect_left(qs, l, key=lambda x: x[0])
             i = find(i)
-            while i<m and qs[i][0]<=r:
+            while i < m and qs[i][0] <= r:
                 ans[qs[i][1]] = length
-                fa[i] = i+1
-                i = find(i+1)
+                fa[i] = i + 1
+                i = find(i + 1)
         return ans
 
 
