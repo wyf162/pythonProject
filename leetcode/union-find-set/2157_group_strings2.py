@@ -53,7 +53,7 @@ class Solution:
 
 if __name__ == '__main__':
 
-    sys.stderr = sys.stdout = open('./other.log', 'w')
+    sys.stdout = open('./other.log', 'w')
 
     sol = Solution()
     # words = ["a", "ab", "ab", "bdc"]
