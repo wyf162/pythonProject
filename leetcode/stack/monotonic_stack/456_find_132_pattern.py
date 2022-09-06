@@ -7,7 +7,7 @@ from typing import List
 
 
 class Solution(object):
-    def find132pattern(self, nums):
+    def find132pattern(self, nums: List[int]):
         N = len(nums)
         leftMin = [float("inf")] * N
         for i in range(1, N):
