@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
-# @Time : 2022/08/27 5:01 PM 
+# @Time : 2022/08/27 5:00 PM
 # @Author : yefe
 # @File : 805_split_array_same_average
 

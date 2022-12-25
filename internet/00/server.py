@@ -24,7 +24,6 @@ while True:
         print('ppid', os.getppid())
         print(data)
         conn.close()
-        os._exit(0)
     else:
         conn.close()
 

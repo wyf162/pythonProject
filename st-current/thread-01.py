@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 # @Time: 2022/6/30 20:47
 # @Author: yefei.wang
-# @File: thread-01.py
+# @File: thread-00.py
 import time
 import random
 
