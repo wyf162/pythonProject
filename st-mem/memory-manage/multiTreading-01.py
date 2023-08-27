@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 # @Time: 2022/6/24 23:11
 # @Author: yefei.wang
-# @File: multiTreading-01.py
+# @File: multiTreading-00.py
 
 import time
 from threading import Thread

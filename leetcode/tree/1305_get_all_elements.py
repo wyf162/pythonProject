@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
-# @Time : 2022/05/01 4:27 PM 
+# @Time : 2022/05/00 4:27 PM
 # @Author : yefe
 # @File : 1305_get_all_elements
 from typing import List

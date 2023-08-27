@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
-# @Time : 2022/4/4 下午8:01 
+# @Time : 2022/4/4 下午8:00
 # @Author : wangyefei
 # @File : segmentTree.py
 from typing import List
