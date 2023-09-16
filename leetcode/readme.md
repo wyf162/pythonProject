@@ -52,6 +52,13 @@
 
 如何剪枝？
 
+## binary-search
+二分查找
+
+最大化最小值
+最小化最大值
+
+
 
 # union find set
 并查集

@@ -12,7 +12,7 @@ class Solution:
         cnt = 0
         for num, v in hst.items():
             if k == 0:
-                cnt += 1 if hst.get(num)>1 else 0
+                cnt += 1 if hst.get(num) > 1 else 0
             else:
                 cnt += 1 if hst.get(num) else 0
 
