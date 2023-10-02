@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import datetime
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# import math
+# from fractions import gcd
+
+# year = 197
+# month = 1
+# day = 1
+# d = datetime.datetime(year=year, month=month, day=day)
+# print(d.timetuple().tm_wday)
+
+def gcd(m, n):
+    while n != 0:
+        m, n = n, m % n
+
+    return m
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    print(gcd(4, 28))

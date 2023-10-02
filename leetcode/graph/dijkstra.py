@@ -39,7 +39,7 @@ class Solution(object):
                 if hst.get((i, u)) and dis[i] + hst[(i, u)] < dis[u]:
                     dis[u] = dis[i] + hst[(i, u)]
                     pre[u] = i
-        self.show_path(n,pre)
+        self.show_path(n, pre)
         return dis, pre
 
     def show_path(self, n, pre):
