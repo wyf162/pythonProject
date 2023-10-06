@@ -6,7 +6,7 @@
 
 import sys
 
-sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
 I = lambda: int(input())

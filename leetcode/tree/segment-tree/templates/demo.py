@@ -47,7 +47,6 @@ class SegmentTree:
         if node.right is None:
             node.right = Node()
 
-
     @staticmethod
     def push_up(node):
         node.val = max(node.left.val, node.right.val)
@@ -64,5 +63,3 @@ if __name__ == '__main__':
     print(ret)
     ret = segment_tree.query(segment_tree.root, 0, segment_tree.n, 1, 10)
     print(ret)
-
-
