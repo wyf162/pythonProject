@@ -22,7 +22,11 @@
 | |[买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/description)| |
 |状态压缩DP|
 | |[关灯问题](https://www.luogu.com.cn/problem/P2622)|优先队列优化转移方程|
-
+|方案数 |
+| |[Playist](https://atcoder.jp/contests/abc323/tasks/abc323_e)|期望概率| 
+|优化DP|
+| |[执行操作使两个字符串相等](https://leetcode.cn/problems/apply-operations-to-make-two-strings-equal/description/)|贪心| 
+| |[带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)|前缀和优化| 
 
 ## Greedy
 |类型|题目|关键点 |
@@ -52,6 +56,15 @@
 |类型|题目| 关键点|
 |---|---|---|
 |异或| |
+|分位统计 | | |
+| |[对数组执行操作使平方和最大](https://leetcode.cn/problems/apply-operations-on-array-to-maximize-sum-of-squares/description/) |贪心|
+
+
+## divided and doubling
+|类型|题目| 关键点|
+|---|---|---|
+| divided|  |  |
+| |[逆序对](https://www.luogu.com.cn/problem/P1908)| 归并排序，统计逆序对 |
 
 
 ## Data Structure
