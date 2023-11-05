@@ -17,7 +17,7 @@
 |树形DP|
 | |[金明的预算方案](https://www.luogu.com.cn/problem/P1064)|树形依赖背包|
 | |[选课](https://www.luogu.com.cn/record/127297160)|树形DP 后序dfs 先选父节点|
-| |[]()| 
+| |[在树上执行操作的最大分数](https://leetcode.cn/problems/maximum-score-after-applying-operations-on-a-tree/description/)| 
 |状态机DP|
 | |[买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/description)| |
 |状态压缩DP|
@@ -26,7 +26,8 @@
 | |[Playist](https://atcoder.jp/contests/abc323/tasks/abc323_e)|期望概率| 
 |优化DP|
 | |[执行操作使两个字符串相等](https://leetcode.cn/problems/apply-operations-to-make-two-strings-equal/description/)|贪心| 
-| |[带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)|前缀和优化| 
+| |[带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)|前缀和优化|
+| |[子数组不同元素个数的平方和](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-ii/)|线段树DP |
 
 ## Greedy
 |类型|题目|关键点 |

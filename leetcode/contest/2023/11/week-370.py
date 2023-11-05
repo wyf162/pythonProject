@@ -1,57 +1,8 @@
 # -*- coding : utf-8 -*-
-# @Time: 2023/10/12 22:24
+# @Time: 2023/11/5 10:30
 # @Author: yefei.wang
-# @File: segmentTree.py
+# @File: week-370.py
 from typing import List
-
-
-class Node:
-    def __init__(self):
-        self.left = None
-        self.right = None
-        self.val = 0
-
-
-class SegmentTree:
-
-    def __init__(self):
-        self.root = Node()
-        self.n = 10 ** 9
-
-    def update(self, node, start, end, l, r, val):
-        if l <= start and end <= r:
-            node.val = val
-            return
-        self.push_down(node)
-        mid = (start + end) >> 1
-        if l <= mid:
-            self.update(node.left, start, mid, l, r, val)
-        if r > mid:
-            self.update(node.right, mid + 1, end, l, r, val)
-        self.push_up(node)
-
-    def query(self, node, start, end, l, r):
-        if l <= start and end <= r:
-            return node.val
-        self.push_down(node)
-        mid = (start + end) >> 1
-        ans = 0
-        if l <= mid:
-            ans = self.query(node.left, start, mid, l, r)
-        if r > mid:
-            ans = max(ans, self.query(node.right, mid + 1, end, l, r))
-        return ans
-
-    @staticmethod
-    def push_down(node):
-        if node.left is None:
-            node.left = Node()
-        if node.right is None:
-            node.right = Node()
-
-    @staticmethod
-    def push_up(node):
-        node.val = max(node.left.val, node.right.val)
 
 
 class SegmentTree:
@@ -90,3 +41,45 @@ class SegmentTree:
         if left > m:
             return self.query(left, right, node * 2 + 2, m + 1, e)
         return max(self.query(left, m, node * 2 + 1, s, m), self.query(m + 1, right, node * 2 + 2, m + 1, e))
+
+
+class Solution:
+
+    def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        b = [x - i for i, x in enumerate(nums)]
+        sb = sorted(b)
+        v2i = dict()
+        i = 0
+        for x in sb:
+            if x in v2i:
+                continue
+            else:
+                v2i[x] = i
+                i += 1
+
+        seg_tree = SegmentTree([0] * i)
+
+        dp = [x for x in nums]
+        dp[0] = nums[0]
+        if dp[0] > 0:
+            seg_tree.update(v2i[b[0]], dp[0], 0, 0, seg_tree.n - 1)
+        for i in range(1, n):
+            mx = seg_tree.query(0, v2i[b[i]], 0, 0, seg_tree.n - 1)
+            dp[i] = max(dp[i], mx + nums[i])
+            if dp[i] > 0:
+                seg_tree.update(v2i[b[i]], dp[i], 0, 0, seg_tree.n - 1)
+        rst = max(dp)
+        return rst
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    # nums = [3, 3, 5, 6]
+    # nums = [5, -1, -3, 8]
+    # nums = [-2,-1]
+    # nums = [2, 7]
+    # nums = [-9, -5, 2, 2, 7]
+    nums = [7, 7, -8, -6, -1, 4, 9, -7, 8, -3]
+    ret = sol.maxBalancedSubsequenceSum(nums)
+    print(ret)
