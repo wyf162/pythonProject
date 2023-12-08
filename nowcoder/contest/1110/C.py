@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
-# @Time: 2023/11/4 10:21
+# @Time: 2023/11/10 19:32
 # @Author: yefei.wang
-# @File: B.py
+# @File: C.py
 
 import sys
 
@@ -10,12 +10,10 @@ I = lambda: int(input())
 MI = lambda: map(int, input().split())
 LI = lambda: list(map(int, input().split()))
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    a.sort()
-    a[1] += 1
-    a.sort()
-    rst = sum(a[1:-1])
-    print(rst)
+n, m, x = MI()
+a = LI()
+b = LI()
+
+d = a + b + [x]
+d.sort()
+print(d[len(d)//2])

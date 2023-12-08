@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
-# @Time: 2023/11/4 10:21
+# @Time: 2023/12/1 20:10
 # @Author: yefei.wang
-# @File: B.py
+# @File: E.py
 
 import sys
 
@@ -12,10 +12,6 @@ LI = lambda: list(map(int, input().split()))
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    a.sort()
-    a[1] += 1
-    a.sort()
-    rst = sum(a[1:-1])
-    print(rst)
+    n, k = MI()
+    gems = []
+    magic_gems = []

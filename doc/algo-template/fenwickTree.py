@@ -77,3 +77,25 @@ class Fenwick_Tree(object):
             self.update_bit(bit_tree, i, self.arr[i])
 
         return bit_tree
+
+
+class FenwickTree:
+    def __init__(self, n):
+        self.n = n
+        self.v = [0] * n
+
+    @staticmethod
+    def lowbit(i):
+        return i & (-i)
+
+    def query(self, i):
+        ans = 0
+        while i > 0:
+            ans += self.v[i]
+            i -= self.lowbit(i)
+        return ans
+
+    def update(self, i, x):
+        while i < self.n:
+            self.v[i] += x
+            i += self.lowbit(i)

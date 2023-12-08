@@ -1,21 +1,15 @@
 # -*- coding : utf-8 -*-
-# @Time: 2023/11/4 10:21
+# @Time: 2023/11/5 23:08
 # @Author: yefei.wang
-# @File: B.py
-
+# @File: D.py
 import sys
 
 sys.stdin = open('../../input.txt')
+# sys.stdout = open('./../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 LI = lambda: list(map(int, input().split()))
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    a.sort()
-    a[1] += 1
-    a.sort()
-    rst = sum(a[1:-1])
-    print(rst)
+    N, K = MI()

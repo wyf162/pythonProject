@@ -54,7 +54,7 @@ class SegmentTree:
         node.val = max(node.left.val, node.right.val)
 
 
-class SegmentTree:
+class SegmentTreeMax:
     def __init__(self, nums: List[int]):
         n = len(nums)
         self.n = n

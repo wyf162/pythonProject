@@ -7,20 +7,31 @@
 import sys
 import random
 
-sys.stdout = open('./../codeforces/input.txt', 'w')
-# sys.stdout = open('./../nowcoder/input.txt', 'w')
+# sys.stdout = open('./../codeforces/input.txt', 'w')
+sys.stdout = open('./../nowcoder/input.txt', 'w')
 
 E5 = 10 ** 5
 E9 = 10 ** 9
 
-tcn = 1
-print(tcn)
-for _tcn_ in range(tcn):
-    print(E5)
-    print(E9, end=' ')
-    for i in range(1, E5):
-        print(E5-i, end=' ')
-    print()
+tcn = 100
+for i in range(tcn):
+    print(5, 5, 2)
+    print(f'{random.randint(0, 100)} {random.randint(0, 100)} {random.randint(0, 100)} {random.randint(0, 100)} 6')
+    print(f'{random.randint(0, 100)} {random.randint(0, 100)} {random.randint(0, 100)} {random.randint(0, 100)} 9')
+
+# tcn = 100
+# print(tcn)
+# for _tcn_ in range(tcn):
+#     n, m, k = random.randint(1, E5), random.randint(1, E5), random.randint(1, E5)
+#     print(n, m, k)
+
+# for _tcn_ in range(tcn):
+#     print(E5)
+#     print(E9, end=' ')
+#     for i in range(1, E5):
+#         print(E5-i, end=' ')
+#     print()
+
 # for _tcn_ in range(tcn):
 #     print(1000)
 #     for i in range(1000):

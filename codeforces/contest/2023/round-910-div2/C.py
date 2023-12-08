@@ -1,21 +1,17 @@
 # -*- coding : utf-8 -*-
-# @Time: 2023/11/4 10:21
+# @Time: 2023/11/19 23:03
 # @Author: yefei.wang
-# @File: B.py
+# @File: C.py
 
+import math
 import sys
 
-sys.stdin = open('../../input.txt')
+sys.stdin = open('./../../../input.txt', 'r')
+
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 LI = lambda: list(map(int, input().split()))
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    a.sort()
-    a[1] += 1
-    a.sort()
-    rst = sum(a[1:-1])
-    print(rst)
+    n, m, k = MI()

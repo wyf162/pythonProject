@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 # @Time: 2023/10/4 0:23
 # @Author: yefei.wang
-# @File: P3379-lca-02.py
+# @File: P3379-lca-Q1.py
 
 import sys
 from functools import lru_cache
