@@ -84,6 +84,14 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
+import sys
+
+sys.stdin = open('./../../input.txt')
+
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
-LI = lambda: list(map(int, input().split()))
+GMI = lambda: map(lambda x: int(x) - 1, input().split())
+LI = lambda: list(MI())
+LGMI = lambda: list(GMI())
+mod = 1000000007
+mod2 = 998244353
