@@ -1,8 +1,4 @@
-# -*- coding : utf-8 -*-
-# @Time: 2023/10/12 22:23
-# @Author: yefei.wang
-# @File: dsu.py
-
+import sys
 import typing
 
 
@@ -71,3 +67,39 @@ class DSU:
             result[leader_buf[i]].append(i)
 
         return list(filter(lambda r: r, result))
+
+
+input = lambda: sys.stdin.readline().rstrip()
+sys.stdin = open('../input.txt', 'r')
+I = lambda: int(input())
+MI = lambda: map(int, input().split())
+GMI = lambda: map(lambda x: int(x) - 1, input().split())
+LI = lambda: list(MI())
+LGMI = lambda: list(GMI())
+YN = lambda x: print('YES' if x else 'NO')
+mod = 1000000007
+mod2 = 998244353
+
+tcn = I()
+for _tcn_ in range(tcn):
+    n = I()
+    p = LGMI()
+    ok = 0
+    ans = 0
+    vis = [0] * n
+    for i in range(n):
+        if vis[i]:
+            continue
+        cyc = set()
+        cyc.add(i)
+        now = p[i]
+        vis[i] = 1
+        while now != i:
+            vis[now] = 1
+            cyc.add(now)
+            now = p[now]
+        ans += len(cyc) - 1
+        for i in cyc:
+            if i + 1 in cyc:
+                ok = 1
+    print(ans + 1 - 2 * ok)
