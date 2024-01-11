@@ -1,5 +1,7 @@
 import os
 import sys
+from collections import deque
+from functools import lru_cache
 from io import BytesIO, IOBase
 from types import GeneratorType
 
@@ -73,18 +75,87 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
-sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
 LGMI = lambda: list(GMI())
-mod = 1000000007
-mod2 = 998244353
 
-if __name__ == '__main__':
-    s = 6
-    k = s
-    while k > 0:
-        k = s & (k - 1)
-        print(k)
+tcn = I()
+for _tcn_ in range(tcn):
+    n, k, c = MI()
+    g = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v = GMI()
+        g[u].append(v)
+        g[v].append(u)
+
+
+    def bfs(start):
+        q = deque([(start, -1)])
+        step = -1
+        while q:
+            step += 1
+            for _ in range(len(q)):
+                x, fa = q.popleft()
+                for y in g[x]:
+                    if y != fa:
+                        q.append((y, x))
+        return step, x
+
+
+    mx1, v1 = bfs(0)
+    mx2, v2 = bfs(v1)
+    # v1, v2 是树直径的两个端点。
+
+    depth = [0] * n
+    B = 30
+    father = [[0] * B for i in range(n)]
+
+
+    @bootstrap
+    def dfs(x, fa, dep):
+        depth[x] = dep
+        father[x][0] = fa
+        for y in g[x]:
+            if y != fa:
+                yield dfs(y, x, dep + 1)
+        yield
+
+
+    dfs(0, -1, 0)
+
+    for i in range(1, B):
+        for x in range(n):
+            father[x][i] = father[father[x][i - 1]][i - 1]
+
+
+    def get_dist(x, y):
+        xx, yy = x, y
+        # 令depth[y] > depth[x]
+        if depth[x] > depth[y]:
+            x, y = y, x
+        tmp = depth[y] - depth[x]
+        for j in range(B):
+            if tmp >> j & 1:
+                y = father[y][j]
+        if y == x:
+            return abs(depth[xx] - depth[yy])
+
+        for j in range(B - 1, -1, -1):
+            px, py = father[x][j], father[y][j]
+            if px != py:
+                x, y = px, py
+        lca = father[x][0]
+        return depth[xx] + depth[yy] - 2 * depth[lca]
+
+
+    rst = mx1 * k
+    for x in range(1, n):
+        d1 = get_dist(0, x)
+        d2 = get_dist(x, v1)
+        d3 = get_dist(x, v2)
+        md = max(d2, d3)
+        rst = max(rst, md * k - d1 * c)
+    print(rst)

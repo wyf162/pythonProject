@@ -1,10 +1,9 @@
+import bisect
 import os
 import sys
-from collections import defaultdict
 from io import BytesIO, IOBase
 
 BUFSIZE = 4096
-inf = float('inf')
 
 
 class FastIO(IOBase):
@@ -55,37 +54,57 @@ sys.stdin = IOWrapper(sys.stdin)
 sys.stdout = IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+# sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 LI = lambda: list(map(int, input().split()))
+N = 500005
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    hst = defaultdict(list)
-    for i, x in enumerate(a):
-        hst[x].append(i)
-    dp = [0] * n
+n, m = MI()
+tree = [[] for i in range(N)]
+for y, x in enumerate(LI(), start=1):
+    tree[x - 1].append(y)
 
-    t, l, r = a[0], -1, 1
-    mx = 1
-    for k, v in hst.items():
-        m = len(v)
-        dp[0] = 1
-        for i in range(1, m):
-            dp[i] = max(1, dp[i - 1] + 1 - (v[i] - v[i - 1] - 1))
-            if dp[i] > mx:
-                mx = dp[i]
-                t, r = k, v[i] + 1
+s = input()
 
-    for i in range(r - 1, -1, -1):
-        if a[i] == t:
-            mx -= 1
-        else:
-            mx += 1
-        if mx == 0:
-            l = i + 1
-            break
+A = [0] * 26
+for i in range(26):
+    A[i] = (1 << i)
 
-    print(t, l, r)
+in_seq = [0] * N
+out_seq = [0] * N
+ts = 0
+hh_ts = [[0] for _ in range(N)]
+hh_xor = [[0] for _ in range(N)]
+
+stk = [[0, 0, 0]]
+while stk:
+    x, h, flag = stk.pop()
+    if flag == 0:
+        ts += 1
+        in_seq[x] = ts
+        hh_ts[h].append(ts)
+        hh_xor[h].append(hh_xor[h][-1] ^ A[ord(s[x]) - 97])
+        stk.append([x, h + 1, 1])
+        for y in tree[x]:
+            stk.append([y, h + 1, 0])
+    else:
+        ts += 1
+        out_seq[x] = ts
+
+for i in range(m):
+    v, h = MI()
+    v -= 1
+    h -= 1
+    l = bisect.bisect_left(hh_ts[h], in_seq[v])
+    r = bisect.bisect_left(hh_ts[h], out_seq[v])
+    if l >= r:
+        print('Yes')
+        continue
+    l = max(l - 1, 0)
+    r -= 1
+    t = hh_xor[h][l] ^ hh_xor[h][r]
+    if t & (t - 1) == 0:
+        print('Yes')
+    else:
+        print('No')

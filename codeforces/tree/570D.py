@@ -1,10 +1,8 @@
 import os
 import sys
-from collections import defaultdict
 from io import BytesIO, IOBase
 
 BUFSIZE = 4096
-inf = float('inf')
 
 
 class FastIO(IOBase):
@@ -55,37 +53,72 @@ sys.stdin = IOWrapper(sys.stdin)
 sys.stdout = IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-I = lambda: int(input())
-MI = lambda: map(int, input().split())
-LI = lambda: list(map(int, input().split()))
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    hst = defaultdict(list)
-    for i, x in enumerate(a):
-        hst[x].append(i)
-    dp = [0] * n
+def I():
+    return input()
 
-    t, l, r = a[0], -1, 1
-    mx = 1
-    for k, v in hst.items():
-        m = len(v)
-        dp[0] = 1
-        for i in range(1, m):
-            dp[i] = max(1, dp[i - 1] + 1 - (v[i] - v[i - 1] - 1))
-            if dp[i] > mx:
-                mx = dp[i]
-                t, r = k, v[i] + 1
 
-    for i in range(r - 1, -1, -1):
-        if a[i] == t:
-            mx -= 1
-        else:
-            mx += 1
-        if mx == 0:
-            l = i + 1
-            break
+def II():
+    return int(input())
 
-    print(t, l, r)
+
+def MII():
+    return map(int, input().split())
+
+
+def LI():
+    return list(input().split())
+
+
+def LII():
+    return list(map(int, input().split()))
+
+
+def GMI():
+    return map(lambda x: int(x) - 1, input().split())
+
+
+def LGMI():
+    return list(map(lambda x: int(x) - 1, input().split()))
+
+
+inf = float('inf')
+
+n, m = MII()
+parent = [-1] + LGMI()
+tree = [[] for _ in range(n)]
+for i, v in enumerate(parent):
+    if i: tree[v].append(i)
+
+depth = [0] * n
+stack = [0]
+while stack:
+    u = stack.pop()
+    for v in tree[u]:
+        depth[v] = depth[u] + 1
+        stack.append(v)
+
+s = I()
+queries = [[] for _ in range(n)]
+for idx in range(m):
+    v, d = GMI()
+    queries[v].append([d, idx])
+
+ans = [0] * m
+depth_xor_acc = [0] * n
+stack = [[0, 0]]
+while stack:
+    u, flag = stack.pop()
+    if not flag:
+        for d, idx in queries[u]:
+            ans[idx] ^= depth_xor_acc[d]
+        depth_xor_acc[depth[u]] ^= 1 << (ord(s[u]) - ord('a'))
+        stack.append([u, 1])
+        for v in tree[u]:
+            stack.append(([v, 0]))
+    else:
+        for d, idx in queries[u]:
+            ans[idx] ^= depth_xor_acc[d]
+
+for v in ans:
+    print('Yes' if v & (v - 1) == 0 else 'No')

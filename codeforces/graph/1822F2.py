@@ -1,5 +1,6 @@
 import os
 import sys
+from collections import deque
 from io import BytesIO, IOBase
 from types import GeneratorType
 
@@ -73,18 +74,65 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
-sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
 LGMI = lambda: list(GMI())
-mod = 1000000007
-mod2 = 998244353
 
-if __name__ == '__main__':
-    s = 6
-    k = s
-    while k > 0:
-        k = s & (k - 1)
-        print(k)
+tcn = I()
+for _tcn_ in range(tcn):
+    n, k, c = MI()
+    g = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v = GMI()
+        g[u].append(v)
+        g[v].append(u)
+
+
+    def bfs(start):
+        q = deque([(start, -1)])
+        step = -1
+        while q:
+            step += 1
+            for _ in range(len(q)):
+                x, fa = q.popleft()
+                for y in g[x]:
+                    if y != fa:
+                        q.append((y, x))
+        return step, x
+
+
+    # v1, v2 是树直径的两个端点。
+    mx1, v1 = bfs(0)
+    mx2, v2 = bfs(v1)
+
+
+    def bfs2(start):
+        dist = [0] * n
+        q = deque([(start, -1)])
+        step = -1
+        while q:
+            step += 1
+            for _ in range(len(q)):
+                x, fa = q.popleft()
+                dist[x] = step
+                for y in g[x]:
+                    if y != fa:
+                        q.append((y, x))
+        return dist
+
+
+    dist1 = bfs2(0)
+    dist2 = bfs2(v1)
+    dist3 = bfs2(v2)
+
+    rst = mx1 * k
+    for x in range(1, n):
+        d1 = dist1[x]
+        d2 = dist2[x]
+        d3 = dist3[x]
+        md = max(d2, d3)
+        rst = max(rst, md * k - d1 * c)
+    print(rst)

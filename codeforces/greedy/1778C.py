@@ -1,3 +1,4 @@
+import itertools
 import os
 import sys
 from io import BytesIO, IOBase
@@ -72,8 +73,8 @@ class IOWrapper(IOBase):
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
+sys.stdin = open('../input.txt')
 
-sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -82,9 +83,30 @@ LGMI = lambda: list(GMI())
 mod = 1000000007
 mod2 = 998244353
 
-if __name__ == '__main__':
-    s = 6
-    k = s
-    while k > 0:
-        k = s & (k - 1)
-        print(k)
+tcn = I()
+for _tcn_ in range(tcn):
+    n, k = MI()
+    a = input()
+    b = input()
+
+    st = set()
+    for c in a:
+        st.add(c)
+    if len(st) <= k:
+        print(n * (n + 1) // 2)
+        continue
+
+    rst = 0
+    for perm in itertools.combinations(st, k):
+        perm = set(perm)
+        cnt = 0
+        t = 0
+        for i in range(n):
+            if a[i] in perm or a[i] == b[i]:
+                t += 1
+            else:
+                cnt += t * (t + 1) // 2
+                t = 0
+        cnt += t * (t + 1) // 2
+        rst = max(rst, cnt)
+    print(rst)

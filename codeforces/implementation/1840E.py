@@ -1,5 +1,6 @@
 import os
 import sys
+from collections import deque
 from io import BytesIO, IOBase
 from types import GeneratorType
 
@@ -73,18 +74,60 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
-sys.stdin = open('./../input.txt', 'r')
+# sys.stdin = open('../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
 LGMI = lambda: list(GMI())
-mod = 1000000007
-mod2 = 998244353
 
-if __name__ == '__main__':
-    s = 6
-    k = s
-    while k > 0:
-        k = s & (k - 1)
-        print(k)
+tcn = I()
+for _tcn_ in range(tcn):
+    s1 = list(input())
+    s2 = list(input())
+    ss = [s1, s2]
+    t, q = MI()
+    ops = [LGMI() for _ in range(q)]
+    n = len(s1)
+    diff = [0] * n
+    cnt = 0
+    for i in range(n):
+        x = int(s1[i] != s2[i])
+        diff[i] = x
+        cnt += x
+
+    ts = deque()
+    for i in range(q):
+        if ts and ts[0][0] + t <= i:
+            _, pos = ts.popleft()
+            if s1[pos] == s2[pos]:
+                diff[pos] = 0
+            else:
+                diff[pos] = 1
+            cnt += diff[pos]
+
+        if ops[i][0] == 0:
+            pos = ops[i][1]
+            cnt -= diff[pos]
+            ts.append((i, pos))
+        elif ops[i][0] == 1:
+            i1, pos1, i2, pos2 = ops[i][1:]
+            ss[i1][pos1], ss[i2][pos2] = ss[i2][pos2], ss[i1][pos1]
+            if s1[pos1] == s2[pos1]:
+                cnt = cnt + 0 - diff[pos1]
+                diff[pos1] = 0
+            else:
+                cnt = cnt + 1 - diff[pos1]
+                diff[pos1] = 1
+
+            if s1[pos2] == s2[pos2]:
+                cnt = cnt + 0 - diff[pos2]
+                diff[pos2] = 0
+            else:
+                cnt = cnt + 1 - diff[pos2]
+                diff[pos2] = 1
+        elif ops[i][0] == 2:
+            if cnt == 0:
+                print('Yes')
+            else:
+                print('No')

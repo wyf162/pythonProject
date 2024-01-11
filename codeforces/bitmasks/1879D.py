@@ -1,10 +1,14 @@
+import math
 import os
 import sys
-from collections import defaultdict
+from collections import Counter
 from io import BytesIO, IOBase
 
-BUFSIZE = 4096
+BUFSIZE = 8192
+MOD = 10 ** 9 + 7
+MODD = 998244353
 inf = float('inf')
+sys.setrecursionlimit(10 ** 6)
 
 
 class FastIO(IOBase):
@@ -13,7 +17,7 @@ class FastIO(IOBase):
     def __init__(self, file):
         self._fd = file.fileno()
         self.buffer = BytesIO()
-        self.writable = "x" in file.mode or "r" not in file.mode
+        self.writable = 'x' in file.mode or 'r' not in file.mode
         self.write = self.buffer.write if self.writable else None
 
     def read(self):
@@ -29,7 +33,7 @@ class FastIO(IOBase):
     def readline(self):
         while self.newlines == 0:
             b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
-            self.newlines = b.count(b"\n") + (not b)
+            self.newlines = b.count(b'\n') + (not b)
             ptr = self.buffer.tell()
             self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
         self.newlines -= 1
@@ -46,46 +50,55 @@ class IOWrapper(IOBase):
         self.buffer = FastIO(file)
         self.flush = self.buffer.flush
         self.writable = self.buffer.writable
-        self.write = lambda s: self.buffer.write(s.encode("ascii"))
-        self.read = lambda: self.buffer.read().decode("ascii")
-        self.readline = lambda: self.buffer.readline().decode("ascii")
+        self.write = lambda s: self.buffer.write(s.encode('ascii'))
+        self.read = lambda: self.buffer.read().decode('ascii')
+        self.readline = lambda: self.buffer.readline().decode('ascii')
 
 
-sys.stdin = IOWrapper(sys.stdin)
-sys.stdout = IOWrapper(sys.stdout)
-input = lambda: sys.stdin.readline().rstrip("\r\n")
+sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
+input = lambda: sys.stdin.readline().rstrip('\r\n')
+# sys.stdin = open('./../input.txt', 'r')
 
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 LI = lambda: list(map(int, input().split()))
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    hst = defaultdict(list)
-    for i, x in enumerate(a):
-        hst[x].append(i)
-    dp = [0] * n
+# sum of xor functions
 
-    t, l, r = a[0], -1, 1
-    mx = 1
-    for k, v in hst.items():
-        m = len(v)
-        dp[0] = 1
-        for i in range(1, m):
-            dp[i] = max(1, dp[i - 1] + 1 - (v[i] - v[i - 1] - 1))
-            if dp[i] > mx:
-                mx = dp[i]
-                t, r = k, v[i] + 1
+n = I()
+a = LI()
 
-    for i in range(r - 1, -1, -1):
-        if a[i] == t:
-            mx -= 1
+partials = [0]
+for thing in a:
+    partials.append(partials[-1] ^ thing)
+
+total = 0
+for j in range(30):
+    p = [(x >> j) & 1 for x in partials]
+    c0 = 0
+    c1 = 0
+    s0 = 0
+    s1 = 0
+    score = 0
+    for i in range(n + 1):
+        if p[i]:
+            c1 += 1
+            s1 += i
+            score += c0 * i - s0
         else:
-            mx += 1
-        if mx == 0:
-            l = i + 1
-            break
+            c0 += 1
+            s0 += i
+            score += c1 * i - s1
+    total += score * (1 << j)
+print(total % MODD)
 
-    print(t, l, r)
+
+
+
+
+
+
+
+
+
+

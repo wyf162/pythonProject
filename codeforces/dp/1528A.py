@@ -73,18 +73,44 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
-sys.stdin = open('./../input.txt', 'r')
+# sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
-LI = lambda: list(MI())
-LGMI = lambda: list(GMI())
-mod = 1000000007
-mod2 = 998244353
+LI = lambda: list(map(int, input().split()))
+mod = 10 ** 9 + 7
 
-if __name__ == '__main__':
-    s = 6
-    k = s
-    while k > 0:
-        k = s & (k - 1)
-        print(k)
+tcn = I()
+for _tcn_ in range(tcn):
+    n = I()
+    nums = [LI() for i in range(n)]
+    g = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v = GMI()
+        g[u].append(v)
+        g[v].append(u)
+
+    dp = [[0, 0] for _ in range(n)]
+
+    @bootstrap
+    def dfs(x, fa):
+        ret00, ret01 = 0, 0
+        ret10, ret11 = 0, 0
+        for y in g[x]:
+            if y == fa:
+                continue
+            yield dfs(y, x)
+            ret00 += abs(nums[x][0] - nums[y][0]) + dp[y][0]
+            ret01 += abs(nums[x][0] - nums[y][1]) + dp[y][1]
+
+            ret10 += abs(nums[x][1] - nums[y][0]) + dp[y][0]
+            ret11 += abs(nums[x][1] - nums[y][1]) + dp[y][1]
+
+        dp[x][0] = max(dp[x][0], ret00, ret01)
+        dp[x][1] = max(dp[x][1], ret10, ret11)
+        yield
+
+    dfs(0, -1)
+    # print(dp)
+    rst = max(dp[0])
+    print(rst)

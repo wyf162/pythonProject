@@ -1,12 +1,15 @@
+import heapq
 import os
 import sys
-from collections import defaultdict
 from io import BytesIO, IOBase
 
 BUFSIZE = 4096
+MOD = 10 ** 9 + 7
+MODD = 998244353
 inf = float('inf')
 
 
+# sys.stdin = open('../input.txt', 'r')
 class FastIO(IOBase):
     newlines = 0
 
@@ -51,41 +54,60 @@ class IOWrapper(IOBase):
         self.readline = lambda: self.buffer.readline().decode("ascii")
 
 
-sys.stdin = IOWrapper(sys.stdin)
-sys.stdout = IOWrapper(sys.stdout)
+sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
+I = lambda: input()
+II = lambda: int(input())
+MI = lambda: map(str, input().split())
+MII = lambda: map(int, input().split())
+LI = lambda: list(input().split())
+LII = lambda: list(map(int, input().split()))
+ZLI = lambda: [0] + list(map(int, input().split()))
 
-I = lambda: int(input())
-MI = lambda: map(int, input().split())
-LI = lambda: list(map(int, input().split()))
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    hst = defaultdict(list)
-    for i, x in enumerate(a):
-        hst[x].append(i)
-    dp = [0] * n
+def solve(n, c, k):
+    hst = dict()
+    cvi = [(v, -i) for i, v in enumerate(c, start=1)]
+    heapq.heapify(cvi)
+    mi, i = heapq.heappop(cvi)
+    hst[-i] = k // mi
+    k = k % mi
 
-    t, l, r = a[0], -1, 1
-    mx = 1
-    for k, v in hst.items():
-        m = len(v)
-        dp[0] = 1
-        for i in range(1, m):
-            dp[i] = max(1, dp[i - 1] + 1 - (v[i] - v[i - 1] - 1))
-            if dp[i] > mx:
-                mx = dp[i]
-                t, r = k, v[i] + 1
-
-    for i in range(r - 1, -1, -1):
-        if a[i] == t:
-            mx -= 1
+    pre = mi
+    pre_i = i
+    while cvi and k:
+        mi, i = heapq.heappop(cvi)
+        diff = mi - pre
+        if diff == 0 or i > pre_i:
+            continue
+        elif k >= diff:
+            mk = min(hst[-pre_i], k // diff)
+            hst[-pre_i] -= mk
+            hst[-i] = mk
+            k -= mk * diff
+            pre, pre_i = mi, i
         else:
-            mx += 1
-        if mx == 0:
-            l = i + 1
             break
+    mx = max(hst.keys())
+    diff = [0] * max(mx + 2, n + 1)
+    for k, v in hst.items():
+        diff[0] += v
+        diff[k] -= v
+    ans = [0] * n
+    ans[0] = diff[0]
+    for i in range(1, n):
+        ans[i] = ans[i - 1] + diff[i]
+    print(' '.join(map(str, ans)))
 
-    print(t, l, r)
+
+def main():
+    tcn = II()
+    for _ in range(tcn):
+        n = II()
+        c = LII()
+        k = II()
+        solve(n, c, k)
+
+
+if __name__ == '__main__':
+    main()

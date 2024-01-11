@@ -1,9 +1,10 @@
 import os
 import sys
-from collections import defaultdict
 from io import BytesIO, IOBase
 
 BUFSIZE = 4096
+MOD = 10 ** 9 + 7
+MODD = 998244353
 inf = float('inf')
 
 
@@ -51,41 +52,47 @@ class IOWrapper(IOBase):
         self.readline = lambda: self.buffer.readline().decode("ascii")
 
 
-sys.stdin = IOWrapper(sys.stdin)
-sys.stdout = IOWrapper(sys.stdout)
+sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
+# sys.stdin = open('./../input.txt', 'r')
 
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
+GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(map(int, input().split()))
 
-tcn = I()
-for _tcn_ in range(tcn):
-    n = I()
-    a = LI()
-    hst = defaultdict(list)
-    for i, x in enumerate(a):
-        hst[x].append(i)
-    dp = [0] * n
+n, m = MI()
+edges = [LI() for _ in range(m)]
+# edges.sort()
 
-    t, l, r = a[0], -1, 1
-    mx = 1
-    for k, v in hst.items():
-        m = len(v)
-        dp[0] = 1
-        for i in range(1, m):
-            dp[i] = max(1, dp[i - 1] + 1 - (v[i] - v[i - 1] - 1))
-            if dp[i] > mx:
-                mx = dp[i]
-                t, r = k, v[i] + 1
+# select a1, b1, a2, b2
 
-    for i in range(r - 1, -1, -1):
-        if a[i] == t:
-            mx -= 1
+a1, b1 = edges[0]
+a2, b2 = -1, -1
+
+
+# a2, b2 = edges[-1]
+
+
+for i in range(m):
+    if edges[i][0] not in [a1, b1] and edges[i][1] not in [a1, b1]:
+        a2, b2 = edges[i]
+        break
+
+if a2 < 0:
+    exit(print('YES'))
+
+
+def check(x, y):
+    for i in range(m):
+        if edges[i][0] in [x, y] or edges[i][1] in [x, y]:
+            continue
         else:
-            mx += 1
-        if mx == 0:
-            l = i + 1
-            break
+            return False
+    return True
 
-    print(t, l, r)
+
+for x, y in [(a1, a2), (a1, b2), (b1, a2), (b1, b2)]:
+    if check(x, y):
+        exit(print('YES'))
+print('NO')
