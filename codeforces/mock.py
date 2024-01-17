@@ -5,7 +5,8 @@ sys.stdout = open('./input.txt', 'w')
 tcn = 100
 print(tcn)
 for _tcn_ in range(tcn):
-    n, m = 5, 5
-    print(n, m)
-    nums = [random.randint(1, 2) for _ in range(n)]
+    n = 1000
+    print(n)
+    nums = [random.randint(-1000, 1000)*2 for _ in range(n)]
+    nums = [x+2 if x==0 else x for x in nums]
     print(*nums)

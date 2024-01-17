@@ -1,3 +1,4 @@
+import math
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
@@ -10,3 +11,11 @@ LGMI = lambda: list(GMI())
 YN = lambda x: print('YES' if x else 'NO')
 mod = 1000000007
 mod2 = 998244353
+
+tcn = I()
+for _tcn_ in range(tcn):
+    x, y = MI()
+    if x <= y:
+        print(y - (y % x) // 2)
+    else:
+        print(x + y)
