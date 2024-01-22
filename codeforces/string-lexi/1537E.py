@@ -17,6 +17,6 @@ ans = []
 for j in range(n):
     t = s[:j + 1]
     t *= (k + j) // (j + 1)
-    ans.append(t)
+    ans.append(t[:k])
 
 print(min(ans))
