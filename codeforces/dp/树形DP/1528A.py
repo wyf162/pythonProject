@@ -1,3 +1,8 @@
+# -*- coding : utf-8 -*-
+# @Time: 2024/1/22 21:55
+# @Author: yefei.wang
+# @File: 1528A.py
+
 import os
 import sys
 from io import BytesIO, IOBase
@@ -72,45 +77,51 @@ class IOWrapper(IOBase):
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
-
-# sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
-LI = lambda: list(map(int, input().split()))
-mod = 10 ** 9 + 7
+LI = lambda: list(MI())
+LGMI = lambda: list(GMI())
+YN = lambda x: print('YES' if x else 'NO')
+mod = 1000000007
+mod2 = 998244353
 
 tcn = I()
 for _tcn_ in range(tcn):
     n = I()
-    nums = [LI() for i in range(n)]
+    L, R = [], []
+    for _ in range(n):
+        x, y = MI()
+        L.append(x)
+        R.append(y)
     g = [[] for _ in range(n)]
     for _ in range(n - 1):
         u, v = GMI()
         g[u].append(v)
         g[v].append(u)
 
-    dp = [[0, 0] for _ in range(n)]
+    dpl = [0] * n
+    dpr = [0] * n
 
     @bootstrap
-    def dfs(x, fa):
-        ret00, ret01 = 0, 0
-        ret10, ret11 = 0, 0
+    def dfs(x, fa, LorR):
+        ret = 0
+        v = L[x] if LorR == 0 else R[x]
         for y in g[x]:
             if y == fa:
                 continue
-            yield dfs(y, x)
-            ret00 += abs(nums[x][0] - nums[y][0]) + dp[y][0]
-            ret01 += abs(nums[x][0] - nums[y][1]) + dp[y][1]
-
-            ret10 += abs(nums[x][1] - nums[y][0]) + dp[y][0]
-            ret11 += abs(nums[x][1] - nums[y][1]) + dp[y][1]
-
-        dp[x][0] = max(dp[x][0], ret00, ret01)
-        dp[x][1] = max(dp[x][1], ret10, ret11)
+            yield dfs(y, x, 0)
+            yield dfs(y, x, 1)
+            ret += max(abs(v - L[y]) + dpl[y], abs(v - R[y]) + dpr[y])
+        if LorR == 0:
+            dpl[x] = ret
+        else:
+            dpr[x] = ret
         yield
 
-    dfs(0, -1)
-    # print(dp)
-    rst = max(dp[0])
-    print(rst)
+    dfs(0, -1, 0)
+    dfs(0, -1, 1)
+
+    ans = max(dpl[0], dpr[0])
+    print(ans)

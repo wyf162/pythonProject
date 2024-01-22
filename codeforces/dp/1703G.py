@@ -28,6 +28,6 @@ for _tcn_ in range(tcn):
                 dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + (A[i] >> (j + 1)))
             dp[i + 1][j] = max(dp[i + 1][j], dp[i][j] + (A[i] >> j) - k)
             if j == 31:
-                dp[i+1][j] = max(dp[i+1][j], dp[i][j])
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
     ret = max(dp[-1])
     print(ret)
