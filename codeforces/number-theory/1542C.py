@@ -1,5 +1,18 @@
-import math
+# -*- coding : utf-8 -*-
+# @Time: 2024/1/17 20:07
+# @Author: yefei.wang
+# @File: 1542C.py
+import bisect
 import sys
+import math
+
+
+def lcm_of_array(a):
+    lcm = a[0]
+    for i in range(1, len(a)):
+        lcm = lcm * a[i] // math.gcd(lcm, a[i])
+    return lcm
+
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../input.txt', 'r')
