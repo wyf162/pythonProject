@@ -1,8 +1,8 @@
 import sys
 from heapq import heappop, heappush, heapify
 
-sys.stdin = open('../input.txt', 'r')
-sys.stdout = open('../output.txt', 'w')
+sys.stdin = open('../../input.txt', 'r')
+sys.stdout = open('../../output.txt', 'w')
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
 I = lambda: int(input())

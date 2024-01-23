@@ -4,7 +4,7 @@ from heapq import heapify, heappop, heappush
 from itertools import permutations
 from math import gcd, log
 
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 sys.stdout = open('../jury.txt', 'w')
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 # input = lambda: sys.stdin.buffer.readline()

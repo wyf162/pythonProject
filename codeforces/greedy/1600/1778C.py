@@ -73,7 +73,7 @@ class IOWrapper(IOBase):
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip('\r\n')
-sys.stdin = open('../input.txt')
+sys.stdin = open('../../input.txt')
 
 I = lambda: int(input())
 MI = lambda: map(int, input().split())

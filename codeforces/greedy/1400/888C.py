@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('../input.txt')
+sys.stdin = open('../../input.txt')
 s = input()
 n = len(s)
 g = [[] for _ in range(26)]
