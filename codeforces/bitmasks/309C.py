@@ -40,9 +40,9 @@ for i in range(32):
                 tot += k
                 d[j] -= math.ceil(k / (1 << (j - i)))
 
-                x =  math.ceil(k / (1 << (j - i))) * (1 << j) - k * (1 << i)
+                x = math.ceil(k / (1 << (j - i))) * (1 << j) - k * (1 << i)
                 if x:
-                    d[x.bit_length()-1] += 1
+                    d[x.bit_length() - 1] += 1
                 break
             else:
                 k -= d[j] << (j - i)
