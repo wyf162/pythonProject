@@ -13,6 +13,7 @@ sys.stdout = open('./../nowcoder/input.txt', 'w')
 
 E5 = 10 ** 5
 E9 = 10 ** 9
+E18 = 10 ** 18
 
 # N = 7
 # for perm in itertools.permutations(list(range(1, 8))):
@@ -20,12 +21,13 @@ E9 = 10 ** 9
 #     print(*perm)
 
 
-tcn = 1000
+tcn = 10000
 print(tcn)
 for _tcn_ in range(tcn):
-    n = 1000
-    print(n)
-    print(*[random.randint(1, 3) for _ in range(n)])
+    n = 10000
+    print(_tcn_+1, random.randint(1, E18))
+    # print(n)
+    # print(*[random.randint(1, 3) for _ in range(n)])
     # n, m, k = random.randint(1, E5), random.randint(1, E5), random.randint(1, E5)
     # print(n, m, k)
 
