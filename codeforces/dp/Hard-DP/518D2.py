@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 
 n, p, t = input().split()
 n = int(n)
