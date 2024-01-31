@@ -7,7 +7,7 @@ import sys
 from collections import deque
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -43,20 +43,13 @@ for _tcn_ in range(tcn):
     # print(dfs)
 
     op = 0
-    mi = [0] * n
-    mx = [0] * n
+    d = [0] * n
     for y in dfs:
-        if mx[y] < left[y]:
+        x = fa[y]
+        if d[y] < left[y]:
             op += 1
-            x = fa[y]
-            mx[x] += right[y] - mi[y]
-            mi[x] += left[y] - mx[y]
-        if mi[y] > right[y]:
-            op += 1
-            x = fa[y]
-
-        else:
-            x = fa[y]
-            mi[x] += mi[y]
-            mx[x] += mx[y]
+            d[y] = right[y]
+        if d[y] > right[y]:
+            d[y] = right[y]
+        d[x] += d[y]
     print(op)
