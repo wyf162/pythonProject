@@ -1,3 +1,5 @@
+# https://codeforces.com/problemset/problem/477/D
+
 import math
 import sys
 
