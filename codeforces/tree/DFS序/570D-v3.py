@@ -90,6 +90,6 @@ def main():
 if __name__ == "__main__":
     import sys
 
-    sys.stdin = open('../input.txt', 'r')
+    sys.stdin = open('../../input.txt', 'r')
     sys.setrecursionlimit(51000)
     main()
