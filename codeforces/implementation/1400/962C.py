@@ -1,7 +1,7 @@
 import math
 import sys
 
-sys.stdin = open('../input.txt')
+sys.stdin = open('../../input.txt')
 
 a = [int(c) for c in input()]
 n = len(a)
