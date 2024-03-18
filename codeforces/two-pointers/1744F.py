@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 1744F.py
 # https://codeforces.com/problemset/problem/1744/F
+# mex median
 
 
 import sys
@@ -56,7 +57,7 @@ for _tcn_ in range(tcn):
         k = (i - 1) // 2
         mi = min(p_inv[k], mi)
         mx = max(p_inv[k], mx)
-        mx_mi = max(mx, i-1)
-        mx_mx = min(n-1, mi+i-1)
+        mx_mi = max(mx, i - 1)
+        mx_mx = min(n - 1, mi + i - 1)
         ans += max(0, mx_mx - mx_mi + 1)
     print(ans)
