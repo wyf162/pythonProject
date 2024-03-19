@@ -5,32 +5,6 @@
 
 
 import sys
-import random
-
-n = 5005
-times = random.randint(100, 500)
-mod = random.getrandbits(32)
-powers = [1] * (n + 1)
-for i in range(1, n + 1):
-    powers[i] = powers[i - 1] * times % mod
-
-
-class RollingHash:
-    def __init__(self, s):
-        self.pre = [0]
-        for c in s:
-            self.pre.append((self.pre[-1] * times + ord(c)) % mod)
-
-        self.suf = [0]
-        for i, c in enumerate(s[::-1]):
-            self.suf.append((self.suf[-1] + ord(c) * powers[i]) % mod)
-
-    def pre_substr(self, i):
-        return self.pre[i]
-
-    def suf_substr(self, i):
-        return self.suf[i]
-
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../../input.txt', 'r')
@@ -44,8 +18,22 @@ mod = 1000000007
 mod2 = 998244353
 
 tcn = I()
-for _tcn_ in range(n):
-    s
-
+for _tcn_ in range(tcn):
+    s = input()
+    n = len(s)
+    ans = 0
+    for d in range(n // 2, 0, -1):
+        cnt = 0
+        for i in range(n-d):
+            if s[i] == s[i + d] or s[i] == '?' or s[i+d] == '?':
+                cnt += 1
+            else:
+                cnt = 0
+            if cnt == d:
+                ans = d * 2
+                break
+        if ans:
+            break
+    print(ans)
 
 
