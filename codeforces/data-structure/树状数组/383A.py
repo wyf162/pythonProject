@@ -5,7 +5,6 @@
 # https://codeforces.com/problemset/problem/383/A
 
 import sys
-from collections import deque
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../input.txt', 'r')
