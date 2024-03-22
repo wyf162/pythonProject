@@ -6,11 +6,6 @@ tcn = 100
 print(tcn)
 for _tcn_ in range(tcn):
     n = 10
-    print(n, n)
-    a = [random.randint(1, 3) for _ in range(n)]
-    b = [random.randint(1, 3) for _ in range(n)]
-    c = [random.randint(1, 3) for _ in range(n)]
-    b[-1] = c[-1]
+    print(n)
+    a = [random.randint(1, 10) for _ in range(n)]
     print(*a)
-    print(*b)
-    print(*c)
