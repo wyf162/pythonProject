@@ -1,12 +1,12 @@
-# -*- coding : utf-8 -*-
-# @Time: 2023/10/6 21:36
-# @Author: yefei.wang
-# @File: P1908.py
-# 分治法求逆序对个数
+# -*- coding: utf-8 -*-
+# @Time: 2024/3/25 10:47
+# @Author: yfwang
+# @File: 986B.py
+# https://codeforces.com/problemset/problem/986/B
 
 import sys
 
-sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 
@@ -53,4 +53,7 @@ def merge_sort(b, e):
 
 merge_sort(0, n - 1)
 
-print(ans)
+if (ans - n) % 2 == 0:
+    print('Petr')
+else:
+    print('Um_nik')
