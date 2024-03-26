@@ -53,8 +53,8 @@ UF = DisjointSetUnion(n, a)
 q = [i for i in range(n) if a[i] >= x]
 edges = []
 for i in range(m):
-    u, v = map(int, input().split());
-    u -= 1;
+    u, v = map(int, input().split())
+    u -= 1
     v -= 1
     edges.append((u, v))
     UF.adj[u].append(i)
@@ -90,7 +90,7 @@ for run in range(n - 1):
         while curr < m:
             u, v = edges[curr]
             curr += 1
-            u = UF.find(u);
+            u = UF.find(u)
             v = UF.find(v)
             if u != v:
                 assert UF.asp[u] + UF.asp[v] >= x

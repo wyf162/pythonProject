@@ -1,4 +1,3 @@
-import sys
 from collections import Counter
 
 # sys.stdin = open('../input.txt', 'r')

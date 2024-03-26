@@ -3,7 +3,6 @@
 # @Author: yefei.wang
 # @File: 1619E.py
 
-import sys
 from heapq import heappop, heappush
 
 # sys.stdin = open('./../input.txt', 'r')

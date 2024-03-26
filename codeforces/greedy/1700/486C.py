@@ -3,8 +3,6 @@
 # @Author: yefei.wang
 # @File: 486C.py
 
-import sys
-
 # sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())

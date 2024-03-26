@@ -1,5 +1,5 @@
 import sys
-from heapq import heappop, heappush, heapify
+from heapq import heappop, heappush
 
 sys.stdin = open('../../input.txt', 'r')
 sys.stdout = open('../../output.txt', 'w')

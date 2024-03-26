@@ -3,8 +3,6 @@
 # @Author: yefei.wang
 # @File: C.py
 
-import sys
-
 # sys.stdin = open('./../input.txt', 'r')
 
 I = lambda: int(input())

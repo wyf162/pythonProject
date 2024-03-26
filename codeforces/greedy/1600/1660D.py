@@ -1,5 +1,4 @@
 import sys
-from collections import Counter
 
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 sys.stdin = open('../../input.txt', 'r')

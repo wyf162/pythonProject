@@ -1,6 +1,4 @@
-import math
 import sys
-from itertools import accumulate
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../input.txt', 'r')
