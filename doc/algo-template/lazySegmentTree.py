@@ -166,3 +166,18 @@ class LazySegmentTree:
             sm = self.op(self.d[r], sm)
             if (r & -r) == r:
                 return 0
+
+
+if __name__ == '__main__':
+    n = 10
+    # 合并左右区间的值
+    op = lambda a, b: a | b
+    # 线段树维护的值的幺元
+    e = 0
+    # 父结点的懒标记更新子结点的值
+    mapping = lambda f, x: x if f == 0 else f
+    # 父结点的懒标记更新子结点的懒标记(合并)
+    composition = lambda f, g: g if f == 0 else g
+    # 懒标记的幺元函数
+    id_ = 0
+    Lst = LazySegmentTree(n, op, e, mapping, composition, id_)
