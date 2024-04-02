@@ -4,7 +4,6 @@
 # @File: 739B.py
 
 import sys
-from bisect import bisect_left
 from types import GeneratorType
 
 
