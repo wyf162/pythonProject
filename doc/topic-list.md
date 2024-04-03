@@ -1,4 +1,5 @@
 ## DP
+
 | 类型      | 题目                                                                                                          | 关键点              |
 |---------|-------------------------------------------------------------------------------------------------------------|------------------|
 | 背包dp    | [樱花](https://www.luogu.com.cn/problem/P1833)                                                                | 多重背包 二进制优化       |
@@ -21,14 +22,14 @@
 |         | [带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)            | 前缀和优化            |
 |         | [子数组不同元素个数的平方和](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-ii/)                 | 线段树DP            |
 
-
 ## Greedy
+
 |类型|题目|关键点 |
 |---|---|
 | 贪心 |[分组](https://www.luogu.com.cn/problem/P4447) | 优先队列模拟|
 
-
 ## Graph Theory
+
 | 类型   | 题目                                                                                                            | 关键点 |
 |------|---------------------------------------------------------------------------------------------------------------|-----|
 | 拓扑排序 |                                                                                                               |
@@ -37,41 +38,41 @@
 |      | [maximum Invitations](https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/description/) |
 |      | [Mad City](https://codeforces.com/problemset/problem/1873/H)                                                  |
 
-
 ## Tree
+
 | 类型    | 题目                                                                                                       | 关键点 |
 |-------|----------------------------------------------------------------------------------------------------------|-----|
 | 二叉搜索树 | [num Of Ways](https://leetcode.cn/problems/number-of-ways-to-reorder-array-to-get-same-bst/description/) |
 | 二叉树   | [distribute Coins](https://leetcode.cn/problems/distribute-coins-in-binary-tree/)                        |
 
-
 ## bitwise
+
 | 类型   | 题目                                                                                                              | 关键点 |
 |------|-----------------------------------------------------------------------------------------------------------------|-----|
 | 异或   |                                                                                                                 |
 | 分位统计 |                                                                                                                 |     |
 |      | [对数组执行操作使平方和最大](https://leetcode.cn/problems/apply-operations-on-array-to-maximize-sum-of-squares/description/) | 贪心  |
 
-
 ## binary-saerch
-| 类型       | 题目                                                             | 关键点 |
-|----------|----------------------------------------------------------------|-----|
-|          | [Binary Search](https://codeforces.com/contest/1945/problem/E) | 二分  |
 
+| 类型 | 题目                                                             | 关键点 |
+|----|----------------------------------------------------------------|-----|
+|    | [Binary Search](https://codeforces.com/contest/1945/problem/E) | 二分  |
 
 ## divided and doubling
-| 类型       | 题目                                                                 | 关键点        |
-|----------|--------------------------------------------------------------------|------------|
-| divided  |                                                                    |            |
-|          | [逆序对](https://www.luogu.com.cn/problem/P1908)                      | 归并排序，统计逆序对 |
-| doubling |                                                                    |            |
-| CF1148D  | [Alyona and a tree](https://codeforces.com/contest/1148/problem/D) | 子树，倍增，二分   |
-| CF1142B  | [Alyona and a tree](https://codeforces.com/contest/1148/problem/D) | 倍增，线段树     |
+
+| 类型       | 题目                                                                 | 关键点            |
+|----------|--------------------------------------------------------------------|----------------|
+| divided  |                                                                    |                |
+|          | [逆序对](https://www.luogu.com.cn/problem/P1908)                      | 归并排序，统计逆序对     |
+| doubling |                                                                    |                |
+| CF1148D  | [Alyona and a tree](https://codeforces.com/contest/1148/problem/D) | 子树，倍增，二分  todo |
+| CF1142B  | [Lynyrd Skynyrd](https://codeforces.com/problemset/problem/1142/B) | 倍增，线段树 todo    |
 
 ## Data Structure
-| 类型                 | 题目                                                       | 关键点 |
-|--------------------|----------------------------------------------------------|-----|
-| disjoint set union |                                                          |     |
-|                    | [BOX](https://atcoder.jp/contests/abc279/tasks/abc279_f) | 模拟  |
 
+| 类型                 | 题目                                                                | 关键点     |
+|--------------------|-------------------------------------------------------------------|---------|
+| disjoint set union | [BOX](https://atcoder.jp/contests/abc279/tasks/abc279_f)          | 模拟      |
+| ListNode           | [Berserk Monsters](https://codeforces.com/contest/1922/problem/D) | 模拟 todo |
 
