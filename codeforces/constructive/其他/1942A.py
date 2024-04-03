@@ -7,7 +7,7 @@
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -23,6 +23,6 @@ for _tcn_ in range(tcn):
     if n == k:
         print(*[1 for _ in range(n)])
     elif k == 1:
-        print(*[1+i for i in range(n)])
+        print(*[1 + i for i in range(n)])
     else:
         print(-1)
