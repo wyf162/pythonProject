@@ -17,6 +17,7 @@
 | 状态机DP   | [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/description)                        |                  |
 | 状态压缩    | [关灯问题](https://www.luogu.com.cn/problem/P2622)                                                              | 优先队列优化转移方程       |
 | CF1950G | [Shuffing Sangs](https://codeforces.com/contest/1950/problem/G)                                             | n^2*2^n(n=16)    |
+| AT348F  | [Oddly Similar](https://atcoder.jp/contests/abc348/tasks/abc348_f)                                          | todo             |
 | 方案数     | [Playist](https://atcoder.jp/contests/abc323/tasks/abc323_e)                                                | 期望概率             | 
 | 优化DP    | [执行操作使两个字符串相等](https://leetcode.cn/problems/apply-operations-to-make-two-strings-equal/description/)        | 贪心               | 
 |         | [带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)            | 前缀和优化            |
