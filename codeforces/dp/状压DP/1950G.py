@@ -38,7 +38,7 @@ for _tcn_ in range(tcn):
 
     dp = [[0] * n for _ in range(1 << n)]
     for j in range(n):
-        dp[1<<j][j] = 1
+        dp[1 << j][j] = 1
     for b in range(1, 1 << n):
         for i in range(n):
             if not (b & (1 << i)):
