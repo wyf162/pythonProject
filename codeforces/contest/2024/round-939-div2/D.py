@@ -1,31 +1,11 @@
 # -*- coding : utf-8 -*-
 # @Time: 2024/4/13 23:20
 # @Author: yefei.wang
-# @File: C2.py
+# @File: D.py
 
 import sys
 from itertools import accumulate
 from types import GeneratorType
-
-
-def bootstrap(f, stack=[]):
-    def wrappedfunc(*args, **kwargs):
-        if stack:
-            return f(*args, **kwargs)
-        else:
-            to = f(*args, **kwargs)
-            while True:
-                if type(to) is GeneratorType:
-                    stack.append(to)
-                    to = next(to)
-                else:
-                    stack.pop()
-                    if not stack:
-                        break
-                    to = stack[-1].send(to)
-            return to
-
-    return wrappedfunc
 
 
 input = lambda: sys.stdin.readline().rstrip()
@@ -40,33 +20,76 @@ mod = 1000000007
 mod2 = 998244353
 
 n = I()
-nums = LI()
-acc = list(accumulate(nums, initial=0))
-ops = []
+A = LI()
+
+DP = [0] * (n + 1)
+FROM = [-1] * (n + 1)
+
+for i in range(n):
+
+    if DP[i + 1] < DP[i] + A[i]:
+        DP[i + 1] = DP[i] + A[i]
+        FROM[i + 1] = i
+
+    for to in range(i, n):
+        l = to - i + 1
+        if DP[to + 1] < DP[i] + l * l:
+            DP[to + 1] = DP[i] + l * l
+            FROM[to + 1] = i
 
 
-@bootstrap
-def f(i, j):
-    if j - i < 1:
-        yield
-    tot = acc[j] - acc[i]
-    c = j - i
-    if tot >= c * c:
-        mx = max(nums[i:j])
-        i0 = nums[i:j].index(mx)
-        yield f(i, i + i0)
-        yield f(i + i0 + 1, j)
+def all(l, r, x):
+    # print("?",(l,r,x))
+    k = 1
+    for i in range(r - 1, l, -1):
+        if x - k >= 0:
+            all(l, i, x - k)
+            k += 1
+        else:
+            break
+
+    # print("!!",(l+1,r))
+
+    if x == 0:
+        if r - l == 1 and A[l] == 0:
+            pass
+        else:
+            LIST.append((l + 1, r))
+            A[l] = 0
     else:
-        for i1 in range(i, j):
-            ops.append((i, i1 + 1))
-            nums[i1] = c
-    yield
+        LIST.append((l + 1, r))
+        A[l] = x
 
 
-f(0, n)
+LIST = []
+ANS = DP[-1]
 
-ret1 = sum(nums)
-ret2 = len(ops)
-print(ret1, ret2)
-for op in ops:
-    print(op[0] + 1, op[1])
+ind = n
+while ind > 0:
+    x = FROM[ind]
+    if x == ind - 1:
+        if A[x] >= 1:
+            pass
+        else:
+            LIST.append((x + 1, ind))
+    else:
+        # print("!",(x,ind,ind-x))
+        if A[x] == 0:
+            LIST.append((x + 1, ind))
+            LIST.append((x + 1, ind))
+        else:
+            LIST.append((x + 1, ind))
+        A[x] = 0
+
+        # print(LIST)
+
+        for kr in range(ind, x, -1):
+            # print("!!!",(x,kr,kr-x-1))
+            all(x, kr, kr - x - 1)
+        LIST.append((x + 1, ind))
+
+    ind = x
+
+print(ANS, len(LIST))
+for x, y in LIST:
+    print(x, y)
