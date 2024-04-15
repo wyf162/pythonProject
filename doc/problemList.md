@@ -23,6 +23,7 @@
 | 优化DP    | [执行操作使两个字符串相等](https://leetcode.cn/problems/apply-operations-to-make-two-strings-equal/description/)        | 贪心                 | 
 |         | [带限制的子多集合的数目](https://leetcode.cn/problems/count-of-sub-multisets-with-bounded-sum/description/)            | 前缀和优化              |
 |         | [子数组不同元素个数的平方和](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-ii/)                 | 线段树DP              |
+| LC3116  | [划分数组得到最小值之和](https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/solutions/)              | DP 单调队列            |
 | 矩阵乘法    | [Neural Network Country](https://codeforces.com/problemset/problem/852/B)                                   | 快速矩阵乘  todo        |
 
 ## Greedy
