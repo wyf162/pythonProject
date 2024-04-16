@@ -58,7 +58,7 @@
 | 分位统计 |                                                                                                                 |     |
 |      | [对数组执行操作使平方和最大](https://leetcode.cn/problems/apply-operations-on-array-to-maximize-sum-of-squares/description/) | 贪心  |
 
-## binary-saerch
+## binary-search
 
 | 类型 | 题目                                                             | 关键点 |
 |----|----------------------------------------------------------------|-----|
@@ -82,3 +82,8 @@
 | disjoint set union | [BOX](https://atcoder.jp/contests/abc279/tasks/abc279_f)          | 模拟      |
 | ListNode           | [Berserk Monsters](https://codeforces.com/contest/1922/problem/D) | 模拟 todo |
 
+## 构造题
+
+| 类型 | 题目                                                                   | 关键点                |
+|----|----------------------------------------------------------------------|--------------------|
+|    | [Amr and Chemistry](https://codeforces.com/problemset/problem/558/C) | 图 树 最短路/最长匹配前缀 中位数 |
