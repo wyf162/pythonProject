@@ -28,10 +28,26 @@ for _tcn_ in range(tcn):
     out = []
     large = n
     for i in range(n - 1, 1, -1):
-        while cd(large, i) in [i, i+1]:
+        while cd(large, i) in [i, i + 1]:
             out.append([n, i])
             large = cd(large, i)
         out.append([i, n])
     print(len(out))
     for i in range(len(out)):
         print(*out[i])
+
+
+def solve2():
+    n = int(input())
+    ops = []
+    beeg = n
+    for i in range(n - 1, 1, -1):
+        if (i - 1) ** 2 < beeg:
+            ops.append((beeg, i))
+            ops.append((beeg, i))
+            beeg = i
+        else:
+            ops.append((i, beeg))
+    print(len(ops))
+    for op in ops:
+        print(*op)
