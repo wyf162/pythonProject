@@ -45,4 +45,11 @@ while i < n:
         tot = hi * cnt
         if hi <= mi:
             break
+        h0 = nums[i]
+        if (hi - h0) * cnt > k:
+            d = k // cnt
+            c = (hi - h0 - 1) // d
+            ans += c
+            hi -= c * d
+            tot = hi * cnt
 print(ans)
