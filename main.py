@@ -1,14 +1,7 @@
 import datetime
+from operator import gt
+from functools import partial
 
-
-# import math
-# from fractions import gcd
-
-# year = 197
-# month = 1
-# day = 1
-# d = datetime.datetime(year=year, month=month, day=day)
-# print(d.timetuple().tm_wday)
 
 def gcd(m, n):
     while n != 0:
@@ -18,4 +11,9 @@ def gcd(m, n):
 
 
 if __name__ == '__main__':
-    print(gcd(4, 28))
+    a = 10
+    b = 1
+    ret = gt(a, b)
+    gt2 = partial(gt, a)
+    ret2 = gt2(b)
+    print(ret2)

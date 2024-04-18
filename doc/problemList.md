@@ -66,14 +66,15 @@
 
 ## divided and doubling
 
-| 类型       | 题目                                                                     | 关键点            |
-|----------|------------------------------------------------------------------------|----------------|
-| divided  |                                                                        |                |
-|          | [逆序对](https://www.luogu.com.cn/problem/P1908)                          | 归并排序，逆序对       |
-|          | [Infinite Inversions](https://codeforces.com/problemset/problem/540/E) | 树状数组，逆序对       |
-| doubling |                                                                        |                |
-| CF1148D  | [Alyona and a tree](https://codeforces.com/contest/1148/problem/D)     | 子树，倍增，二分  todo |
-| CF1142B  | [Lynyrd Skynyrd](https://codeforces.com/problemset/problem/1142/B)     | 倍增，线段树 todo    |
+| 类型          | 题目                                                                     | 关键点            |
+|-------------|------------------------------------------------------------------------|----------------|
+| divided 分治  |                                                                        |                |
+|             | [逆序对](https://www.luogu.com.cn/problem/P1908)                          | 归并排序，逆序对       |
+|             | [Infinite Inversions](https://codeforces.com/problemset/problem/540/E) | 树状数组，逆序对       |
+| doubling 倍增 |                                                                        |                |
+| CF1148D     | [Alyona and a tree](https://codeforces.com/contest/1148/problem/D)     | 子树，倍增，二分  todo |
+| CF1142B     | [Lynyrd Skynyrd](https://codeforces.com/problemset/problem/1142/B)     | 倍增，线段树 todo    |
+| LGP7167     | [Fountain](https://www.luogu.com.cn/problem/P7167)                     | 单调栈 倍增         |
 
 ## Data Structure
 

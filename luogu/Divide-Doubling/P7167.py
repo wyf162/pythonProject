@@ -2,6 +2,8 @@
 # @Time: 2023/10/5 20:39
 # @Author: yefei.wang
 # @File: P7167.py
+# https://www.luogu.com.cn/problem/P7167
+# 单调栈 倍增
 
 import sys
 
