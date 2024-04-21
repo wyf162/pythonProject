@@ -6,29 +6,41 @@
 
 import sys
 
-input = lambda: sys.stdin.readline().rstrip('\r\n')
-sys.stdin = open('./../../input.txt', 'r')
-I = lambda: int(input())
-MI = lambda: map(int, input().split())
-GMI = lambda: map(lambda x: int(x) - 1, input().split())
-LI = lambda: list(MI())
-LGMI = lambda: list(GMI())
-YN = lambda x: print('YES' if x else 'NO')
-mod = 1000000007
-mod2 = 998244353
+sys.setrecursionlimit(10 ** 6)
 
-s = input()
-stk = 0
+S = input() + ")"
+n = len(S) - 1
+p = [-1] * n
+t = []
+for i in range(n):
+    if S[i] == "(":
+        t.append(i)
+    elif S[i] == ")":
+        x = t.pop()
+        p[x] = i
+        p[i] = x
+ans = []
 
-chrs = []
-nums = []
-for c in s:
-    if c == '(':
-        stk += 1
-    elif c == ')':
-        s -= 1
+
+def f(i, mode):
+    if mode == "R":
+        if S[i] == ")":
+            return
+        elif S[i] == "(":
+            f(p[i] - 1, "L")
+            f(p[i] + 1, "R")
+        else:
+            print(S[i], end="")
+            f(i + 1, "R")
     else:
-        nums.append(stk)
-        chrs.append(c)
+        if S[i] == "(":
+            return
+        elif S[i] == ")":
+            f(p[i] + 1, "R")
+            f(p[i] - 1, "L")
+        else:
+            print(chr(ord(S[i]) ^ 32), end="")
+            f(i - 1, "L")
 
 
+f(0, "R")

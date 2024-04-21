@@ -24,7 +24,7 @@ n, a, x, y = MI()
 def f(v):
     if v == 0: return 0
     return min(f(v // a) + x,
-               y + sum(f(v // i) for i in range(1, 7)) / 6)
+               y * 6 / 5 + sum(f(v // i) for i in range(2, 7)) / 5)
 
 
 print(f(n))

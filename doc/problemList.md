@@ -49,6 +49,7 @@
 | 二叉搜索树   | [num Of Ways](https://leetcode.cn/problems/number-of-ways-to-reorder-array-to-get-same-bst/description/) |
 | 二叉树     | [distribute Coins](https://leetcode.cn/problems/distribute-coins-in-binary-tree/)                        |
 | CF1491E | [Fib-Tree](https://codeforces.com/contest/1491/problem/E)                                                | fib推论 |
+| 树的构造和遍历 | [Transpose](https://atcoder.jp/contests/abc350/tasks/abc350_f)                                           | 树的遍历  |
 
 ## bitwise
 
