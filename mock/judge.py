@@ -3,10 +3,10 @@
 # @Author: yefei.wang
 # @File: judge.py
 
-with open('./../nowcoder/output.txt', 'r') as f:
+with open('./../codeforces/output.txt', 'r') as f:
     rds1 = f.readlines()
 
-with open('./../nowcoder/jury.txt', 'r') as f:
+with open('./../codeforces/jury.txt', 'r') as f:
     rds2 = f.readlines()
 
 n = len(rds1)

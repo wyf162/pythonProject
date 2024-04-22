@@ -8,8 +8,8 @@ import sys
 import random
 import itertools
 
-# sys.stdout = open('./../codeforces/input.txt', 'w')
-sys.stdout = open('./../nowcoder/input.txt', 'w')
+sys.stdout = open('./../codeforces/input.txt', 'w')
+# sys.stdout = open('./../nowcoder/input.txt', 'w')
 
 E5 = 10 ** 5
 E9 = 10 ** 9
@@ -21,11 +21,20 @@ E18 = 10 ** 18
 #     print(*perm)
 
 
-tcn = 10000
+tcn = 100
 print(tcn)
 for _tcn_ in range(tcn):
-    n = 10000
-    print(_tcn_+1, random.randint(1, E18))
+    print(5, 3)
+    for i in range(5):
+        for i in range(5):
+            if random.random() < 0.5:
+                print('W', end='')
+            else:
+                print('B', end='')
+        print()
+
+
+
     # print(n)
     # print(*[random.randint(1, 3) for _ in range(n)])
     # n, m, k = random.randint(1, E5), random.randint(1, E5), random.randint(1, E5)
