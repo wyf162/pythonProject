@@ -31,6 +31,7 @@
 |类型|题目|关键点 |
 |---|---|
 | 贪心 |[分组](https://www.luogu.com.cn/problem/P4447) | 优先队列模拟|
+| CF922D |[Robot Vacuum Cleaner](https://codeforces.com/problemset/problem/922/D) | 邻项交换法 |
 
 ## Graph Theory
 
