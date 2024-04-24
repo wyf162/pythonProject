@@ -91,3 +91,4 @@
 | 类型 | 题目                                                                   | 关键点                |
 |----|----------------------------------------------------------------------|--------------------|
 |    | [Amr and Chemistry](https://codeforces.com/problemset/problem/558/C) | 图 树 最短路/最长匹配前缀 中位数 |
+|    | [Dogeforces](https://codeforces.com/contest/1494/problem/D)          | 递归构造               |
