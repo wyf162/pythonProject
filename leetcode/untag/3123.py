@@ -5,6 +5,7 @@
 
 from typing import List
 from heapq import heappush, heappop
+from collections import Counter
 
 
 class Solution:
@@ -16,8 +17,8 @@ class Solution:
 
         pq = []
         heappush(pq, [0, 0])
-        dist = dict()
-        dist[n - 1] = 0
+        dist = Counter()
+        dist[0] = 0
         while pq:
             d, x = heappop(pq)
             for y, w in g[x]:
