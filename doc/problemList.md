@@ -25,6 +25,7 @@
 |         | [子数组不同元素个数的平方和](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-ii/)                 | 线段树DP              |
 | LC3116  | [划分数组得到最小值之和](https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/solutions/)              | DP 单调队列            |
 | 矩阵乘法    | [Neural Network Country](https://codeforces.com/problemset/problem/852/B)                                   | 快速矩阵乘  todo        |
+| 期望DP    | [Assimilation IV](https://codeforces.com/problemset/problem/1525/E)                                         | todo 组合数学 期望DP     |
 
 ## Greedy
 
