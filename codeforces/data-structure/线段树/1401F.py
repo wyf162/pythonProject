@@ -5,6 +5,20 @@
 # https://codeforces.com/problemset/problem/1401/F
 # zkw
 
+# replace
+#
+# reverse
+# k == 0: [1, 1], [2, 2] ...
+# k == 1: [1, 2], [3, 4] ...
+# k == 2: [1, 4], [5, 8] ...
+#
+# swap
+# k == 0: [1, 1]--[2, 2]
+# k == 1: [1, 2]--[3, 4]
+# k == 2: [1, 4]--[5, 8]
+#
+# sum
+
 from sys import stdin
 
 input = lambda: stdin.readline()[:-1]
