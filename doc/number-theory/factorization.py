@@ -22,10 +22,9 @@ class Factorization:
             while self.sieve[n] == p:
                 cnt += 1
                 n //= p
-            s = divisors.copy()
-            for i in s:
+            for i in range(len(divisors)):
                 for j in range(1, cnt + 1):
-                    divisors.append(i * (p ** j))
+                    divisors.append(divisors[i] * (p ** j))
         return divisors
 
     def get_factors(self, n):
@@ -41,8 +40,12 @@ class Factorization:
                 factors.append(p)
         return factors
 
+    def is_prime(self, n):
+        return self.sieve[n] == n
+
 
 if __name__ == '__main__':
     fact = Factorization(1000000)
     print(fact.get_factors(720720))
     print(fact.get_divisors(720720))
+    print(fact.is_prime(100003))
