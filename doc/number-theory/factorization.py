@@ -47,5 +47,13 @@ class Factorization:
 if __name__ == '__main__':
     fact = Factorization(1000000)
     print(fact.get_factors(720720))
+    print(fact.get_factors(720720).__len__())
     print(fact.get_divisors(720720))
+    print(fact.get_divisors(720720).__len__())
     print(fact.is_prime(100003))
+
+    N = 60060
+    print(fact.get_factors(N))
+    print(fact.get_factors(N).__len__())
+    print(fact.get_divisors(N))
+    print(fact.get_divisors(N).__len__())
