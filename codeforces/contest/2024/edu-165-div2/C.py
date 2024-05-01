@@ -4,7 +4,6 @@
 # @File: C.py
 
 import sys
-from itertools import accumulate
 from math import inf
 
 input = lambda: sys.stdin.readline().rstrip()
@@ -22,20 +21,18 @@ tcn = I()
 for _tcn_ in range(tcn):
     n, k = MI()
     nums = LI()
-    pre_sum = list(accumulate(nums, initial=0))
-    dp = [[[inf for _ in range(k + 1)] for _ in range(k + 1)] for _ in range(n + 1)]
-    dp[0][0][0] = 0
-    dp[1][0][0] = nums[0]
-    for i in range(1, n):
-        for k1 in range(k + 1):
-            for k2 in range(min(i, k + 1)):
-                if k2 > k1:
-                    continue
-                dp[i + 1][k1][k2] = min(dp[i + 1][k1][k2], dp[i][k1][k2] + nums[i])
-                if k1 == k or k2 == k:
-                    continue
-                dp[i + 1][k1 + 1][k2 + 1] = min(dp[i + 1][k1 + 1][k2 + 1],
-                                                dp[i - k2 - 1][k1 - k2][0] + min(nums[i - k2 - 1:i + 1]) * (k2 + 2))
-
-    ans = min(min(dp[n][i]) for i in range(k + 1))
-    print(ans)
+    dp = [[inf] * (k + 1) for _ in range(n)]
+    for i in range(n):
+        for j in range(k + 1):
+            for l in range(j + 1):
+                if l >= i:
+                    mn = inf
+                    for c in range(i + 1):
+                        mn = min(mn, nums[c])
+                    dp[i][j] = min(dp[i][j], mn * (i + 1))
+                else:
+                    mn = inf
+                    for c in range(i - l, i + 1):
+                        mn = min(mn, nums[c])
+                    dp[i][j] = min(dp[i][j], dp[i - l - 1][j - l] + mn * (l + 1))
+    print(dp[-1][k])
