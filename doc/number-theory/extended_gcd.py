@@ -49,9 +49,9 @@ def solve_linear_diophantine_equation(a, b, z):
 
 
 # 示例
-a = 7
-b = 5
-z = 19
+a = 5
+b = 3
+z = -1
 
 solution = solve_linear_diophantine_equation(a, b, z)
 if solution:
