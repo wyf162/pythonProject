@@ -11,7 +11,7 @@ with open('./output.txt', 'r') as f:
 with open('./jury.txt', 'r') as f:
     jury = f.readlines()
 
-n = len(jury)
+n = len(answer)
 for i in range(n):
     if jury[i] != answer[i]:
         print(f'first diff in {i + 1}')
