@@ -38,7 +38,7 @@ tcn = I()
 for _tcn_ in range(tcn):
     N, M = MI()
     A = LI()
-
+    # 重点 DP维护
     next_dup = [N] * (N + 1)
     last_seen = [N] * (M + 1)
     for i in reversed(range(N)):
