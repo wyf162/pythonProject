@@ -38,11 +38,49 @@ tcn = I()
 for _tcn_ in range(tcn):
     N, M = MI()
     A = LI()
-    group = [[] for _ in range(N+1)]
+
+    next_dup = [N] * (N + 1)
+    last_seen = [N] * (M + 1)
+    for i in reversed(range(N)):
+        if A[i] == 0:
+            next_dup[i] = next_dup[i + 1]
+        else:
+            next_dup[i] = min(next_dup[i + 1], last_seen[A[i]])
+            last_seen[A[i]] = i
+
+    st = set()
+    pre_sum = [0]
     for i, a in enumerate(A):
-        group[a].append(i)
-    cnt = 0
-    for i in range(1, N+1):
-        if group[i]:
-            cnt += 1
-            mx
+        if a == 0:
+            pre_sum.append(pre_sum[-1] + 1)
+            continue
+        st.add(a)
+        pre_sum.append(pre_sum[-1])
+    x = len(st) if len(st) > 0 else 1
+
+    ans = 0
+    for k in range(x, min(N, M) + 1):
+        f1 = comb(M - len(st), k - len(st))
+
+        for i in range(0, N, k):
+            R = min(N, k + i)
+            if next_dup[i] < R:
+                f1 = 0
+                break
+
+            if i + k <= N:
+                zero = pre_sum[i + k] - pre_sum[i]
+                # zero = A[i:i + k].count(0)
+                f1 *= fact[zero]
+                f1 %= mod
+            else:
+                tot = N - i
+                zero = pre_sum[N] - pre_sum[i]
+                non_zero = tot - zero
+                n1 = k - non_zero
+                n2 = k - tot
+                f1 *= fact[n1] * fact_inv[n2]
+                f1 %= mod
+        ans += f1
+        ans %= mod
+    print(ans)
