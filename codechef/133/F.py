@@ -19,3 +19,4 @@ mod2 = 998244353
 
 tcn = I()
 for _tcn_ in range(tcn):
+    pass
