@@ -39,7 +39,7 @@ def get_sum(nums):
     return sum(A[i][nums[i]] for i in range(n))
 
 
-tcn = 4
+tcn = 1
 for _tcn_ in range(tcn):
     n = I()
     A = [LI() for _ in range(n)]
@@ -54,7 +54,7 @@ for _tcn_ in range(tcn):
     cur = f1([a[0] for a in A])
     h = []
     heappush(h, (-get_sum(f2(cur)), cur))
-
+    vis = set()
     while True:
         val, cur = heappop(h)
         if cur not in st:
@@ -65,7 +65,10 @@ for _tcn_ in range(tcn):
             for i in range(n):
                 if nums[i] > 1:
                     nums[i] -= 1
-                    heappush(h, (-get_sum(nums), f1(nums)))
+                    x = f1(nums)
+                    if x not in vis:
+                        heappush(h, (-get_sum(nums), x))
+                        vis.add(x)
                     nums[i] += 1
 
     print(*ans)
