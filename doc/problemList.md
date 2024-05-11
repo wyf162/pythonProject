@@ -29,10 +29,10 @@
 
 ## Greedy
 
-|类型|题目|关键点 |
-|---|---|
-| 贪心 |[分组](https://www.luogu.com.cn/problem/P4447) | 优先队列模拟|
-| CF922D |[Robot Vacuum Cleaner](https://codeforces.com/problemset/problem/922/D) | 邻项交换法 |
+| 类型     | 题目                                                                      | 关键点    |
+|--------|-------------------------------------------------------------------------|--------|
+| 贪心     | [分组](https://www.luogu.com.cn/problem/P4447)                            | 优先队列模拟 |
+| CF922D | [Robot Vacuum Cleaner](https://codeforces.com/problemset/problem/922/D) | 邻项交换法  |
 
 ## Graph Theory
 
@@ -97,3 +97,8 @@
 |----|----------------------------------------------------------------------|--------------------|
 |    | [Amr and Chemistry](https://codeforces.com/problemset/problem/558/C) | 图 树 最短路/最长匹配前缀 中位数 |
 |    | [Dogeforces](https://codeforces.com/contest/1494/problem/D)          | 递归构造               |
+
+## 数学
+| 类型   | 题目                                                                        | 关键点        |
+|------|---------------------------------------------------------------------------|------------|
+| 组合数学 | [Product Transformation](https://codeforces.com/problemset/problem/852/F) | 组合数学 逆元 求余 |
