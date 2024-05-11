@@ -3,7 +3,7 @@
 # @Author: yefei.wang
 # @File: 1606D.py
 # https://codeforces.com/contest/1606/problem/D
-# sort
+# sortings
 
 from sys import stdin
 
