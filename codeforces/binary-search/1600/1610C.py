@@ -1,8 +1,7 @@
 import sys
-from collections import Counter
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -14,31 +13,25 @@ mod2 = 998244353
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n, m = MI()
-    a = LI()
-    # 被卡hash 先sort.
-    a.sort()
-    cnt = Counter(a)
+    n = I()
+    ab = [LI() for _ in range(n)]
 
 
     def check(x):
         c = 0
-        for i in range(1, n + 1):
-            if cnt[i] >= x:
-                c += x
-            else:
-                c += cnt[i] + (x - cnt[i]) // 2
-            if c >= m:
-                return True
-        return False
+        for i in range(n):
+            a, b = ab[i]
+            if x - 1 - c <= a and b >= c:
+                c += 1
+        return c >= x
 
 
-    L, R = 0, 10 ** 6
+    L, R = 1, n
     while L <= R:
         mid = (L + R) // 2
         if check(mid):
             ans = mid
-            R = mid - 1
-        else:
             L = mid + 1
+        else:
+            R = mid - 1
     print(ans)

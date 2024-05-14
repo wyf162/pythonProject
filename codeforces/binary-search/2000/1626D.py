@@ -8,8 +8,8 @@ import bisect
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
-sys.stdout = open('../output.txt', 'w')
+sys.stdin = open('../../input.txt', 'r')
+sys.stdout = open('../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -28,7 +28,6 @@ for x in range(1, N):
         arr[x] = 0
     else:
         arr[x] = pow(2, x.bit_length()) - x
-
 
 tcn = I()
 for _tcn_ in range(tcn):
@@ -50,7 +49,7 @@ for _tcn_ in range(tcn):
             if j - 1 == i:
                 continue
             else:
-                ans = min(ans, arr[c1] + arr[cnt[j - 1] - cnt[i]], arr[cnt[-1] - cnt[j - 1]])
+                ans = min(ans, arr[c1] + arr[cnt[j - 1] - cnt[i]] + arr[cnt[-1] - cnt[j - 1]])
         if ans == 0:
             break
     print(ans)
