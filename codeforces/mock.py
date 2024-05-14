@@ -2,11 +2,11 @@ import random
 import sys
 
 sys.stdout = open('./input.txt', 'w')
-tcn = 1000
+tcn = 1
 print(tcn)
 for _tcn_ in range(tcn):
-    n = 10
+    n = 200000
     print(n)
-    nums = [random.randint(1, 100) for i in range((n))]
+    nums = [i+1 for i in range((n))]
     print(*nums)
 
