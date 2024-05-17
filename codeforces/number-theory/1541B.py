@@ -25,9 +25,9 @@ for _tcn_ in range(tcn):
     nums.sort()
     ans = 0
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if nums[i][0] * nums[j][0] >= 2 * n:
                 break
-            if nums[i][0] * nums[j][0] ==  nums[i][1] + nums[j][1]:
+            if nums[i][0] * nums[j][0] == nums[i][1] + nums[j][1]:
                 ans += 1
     print(ans)
