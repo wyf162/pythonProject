@@ -3,7 +3,7 @@
 # @Author: yefei.wang
 # @File: 1651D.py
 # https://codeforces.com/contest/1651/problem/D
-# manhattan
+# manhattan shortest_paths dfs
 
 import sys
 from collections import deque
@@ -27,7 +27,7 @@ def manht(x1, y1, x2, y2):
 
 inf = 0x3f3f3f3f
 
-tcn = 2
+tcn = 1
 for _tcn_ in range(tcn):
     n = I()
     points = [TI() for _ in range(n)]
@@ -42,22 +42,17 @@ for _tcn_ in range(tcn):
         for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             nx, ny = x + dx, y + dy
             if (nx, ny) not in hst:
-                hst[(x, y)] = nx, ny
-                dis[(nx, ny)] = 1
+                hst[(x, y)] = (nx, ny)
+                q.append((x, y))
                 break
-        else:
-            q.append((x, y))
 
     while q:
         x, y = q.popleft()
         for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             nx, ny = x + dx, y + dy
-            if hst[(nx, ny)]:
-                if dis[(x, y)] > manht(x, y, *hst[(nx, ny)]):
-                    hst[(x, y)] = hst[(nx, ny)]
-                    dis[(x, y)] = manht(x, y, *hst[(nx, ny)])
-        if dis[(x, y)] == inf:
-            q.append((x, y))
+            if (nx, ny) in hst and hst[(nx, ny)] is None:
+                hst[(nx, ny)] = hst[(x, y)]
+                q.append((nx, ny))
 
     ans = [hst[(x, y)] for x, y in points]
     for i in range(n):
