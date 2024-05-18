@@ -3,7 +3,6 @@ import sys
 
 sys.stdout = open('./input.txt', 'w')
 
-
 E5 = 10 ** 5
 E9 = 10 ** 9
 E18 = 10 ** 18
