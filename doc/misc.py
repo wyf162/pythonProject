@@ -1,4 +1,5 @@
 import sys, os, io
+from collections import defaultdict, Counter
 
 input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
 
@@ -15,8 +16,13 @@ def divisors(M):
     return d
 
 
+# 据说defaultdict(int)比Counter() 快
+cnt = Counter()
+hst = defaultdict(int)
+
 if __name__ == '__main__':
-    x = 959345256
-    ft = len(divisors(x))
-    print(divisors(x))
-    print(ft)
+    print(hst[0])
+    # x = 959345256
+    # ft = len(divisors(x))
+    # print(divisors(x))
+    # print(ft)
