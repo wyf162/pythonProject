@@ -172,6 +172,7 @@ import sys
 
 input = lambda: sys.stdin.readline().rstrip('\r\n')
 sys.stdin = open('./../../input.txt', 'r')
+sys.stdout = open('./../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -199,14 +200,15 @@ for _tcn_ in range(tcn):
             cur = mx + 1
             Lst.set(i, mx + 1)
         f.append(cur)
+    # print(f)
 
     mx = max(f)
     g = [0] * (n + 2)
     ans = []
     for i in range(n - 1, -1, -1):
         h = f[i]
-        g[h] = max(g[h], nums[i])
         if nums[i] < g[h + 1] or h == mx:
+            g[h] = max(g[h], nums[i])
             ans.append(i + 1)
     ans.sort()
     print(len(ans))
