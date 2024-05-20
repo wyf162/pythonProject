@@ -9,8 +9,8 @@ import random
 import itertools
 
 # sys.stdout = open('./../codeforces/input.txt', 'w')
-# sys.stdout = open('./../nowcoder/input.txt', 'w')
-sys.stdout = open('./../codechef/input.txt', 'w')
+sys.stdout = open('./../nowcoder/input.txt', 'w')
+# sys.stdout = open('./../codechef/input.txt', 'w')
 
 E5 = 10 ** 5
 E9 = 10 ** 9
@@ -23,15 +23,12 @@ E18 = 10 ** 18
 
 
 tcn = 1
-print(tcn)
+# print(tcn)
 for _tcn_ in range(tcn):
-    N = 10000
-    M = 100
-    print(N, M)
-    # nums = [random.randint(-1, 1) for _ in range(N)]
-    # nums = [x if x > 0 else 0 for x in nums]
-    nums = [0] * N
-    print(*nums)
+    N = 100
+    print(N)
+    for _ in range(N):
+        print(random.randint(0, E5), random.randint(0, E5))
 
 
 
