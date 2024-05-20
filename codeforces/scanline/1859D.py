@@ -4,7 +4,6 @@
 # @File: 1859D.py
 # https://codeforces.com/problemset/problem/1859/D
 
-
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
