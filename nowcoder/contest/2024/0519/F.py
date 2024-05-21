@@ -2,18 +2,15 @@
 # @Time: 2024/5/19 20:18
 # @Author: yefei.wang
 # @File: F.py
+# 容斥原理 组合数学
 
 
-import math
-import sys
-
-input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../../../input.txt', 'r')
-I = lambda: int(input())
-MI = lambda: map(int, input().split())
-GMI = lambda: map(lambda x: int(x) - 1, input().split())
-LI = lambda: list(MI())
-LGMI = lambda: list(GMI())
-YN = lambda x: print('YES' if x else 'NO')
-mod = 1000000007
-mod2 = 998244353
+MOD = 10**9+7
+n = int(input())
+arr = list(map(int, input().split()))
+s = sum(arr) % MOD
+ans = s*(s-1)*(s-2)*(s-3)//12
+ans -= sum(a*(a-1)*(a-2)//3 * (s-a) % MOD for a in arr)
+ans -= sum(a*(a-1)*(a-2)*(a-3)//12 % MOD for a in arr)
+ans += sum(a*(s-a)*(s-a-1) % MOD for a in arr)
+print(ans % MOD)
