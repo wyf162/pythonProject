@@ -3,12 +3,13 @@
 # @Author: yefei.wang
 # @File: 510D.py
 # https://codeforces.com/contest/510/problem/D
+# 裴蜀定理
 
 import math
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -24,19 +25,22 @@ for _tcn_ in range(tcn):
     L = LI()
     C = LI()
     ans = inf
-    cnt = dict()
+    dp = [dict() for _ in range(n + 1)]
+    dp[0][0] = 0
     for i in range(n):
-        for j in range(i + 1, n):
-            g = math.gcd(L[i], L[j])
-            if g == 1:
-                ans = min(ans, C[i] + C[j])
+        for k in dp[i]:
+            g = math.gcd(k, L[i])
+            if g in dp[i + 1]:
+                dp[i + 1][g] = min(dp[i + 1][g], dp[i][k] + C[i])
             else:
-                if g in cnt:
-                    cnt[g] = C[i] + C[j]
-                else:
-                    cnt[g] = min(cnt[g], C[i] + C[j])
+                dp[i + 1][g] = dp[i][k] + C[i]
+        for k in dp[i]:
+            if k in dp[i + 1]:
+                dp[i + 1][k] = min(dp[i + 1][k], dp[i][k])
+            else:
+                dp[i + 1][k] = dp[i][k]
 
-    if ans < inf:
-        print(ans)
+    if 1 in dp[-1]:
+        print(dp[-1][1])
     else:
         print(-1)
