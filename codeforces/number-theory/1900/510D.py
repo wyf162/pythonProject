@@ -3,7 +3,7 @@
 # @Author: yefei.wang
 # @File: 510D.py
 # https://codeforces.com/contest/510/problem/D
-# 裴蜀定理
+# 裴蜀定理 bitmasks
 
 import math
 import sys
