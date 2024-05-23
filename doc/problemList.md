@@ -9,6 +9,7 @@
 |         | [金明的预算方案](https://www.luogu.com.cn/problem/P1064)                                                           | 树形依赖背包             |
 | 序列DP    | [等差数组子序列](https://leetcode.cn/problems/arithmetic-slices-ii-subsequence/description/)                       |                    |
 |         | [大师](https://www.luogu.com.cn/problem/P4933)                                                                |                    |
+|         | [Sereja and Sequence](https://codeforces.com/contest/314/problem/C)                                         | LIS 去重             |
 | DAG上DP  | [Count Restricted Paths](https://leetcode.cn/problems/number-of-restricted-paths-from-first-to-last-node/)  |
 |         | [Largest Path Value](https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/description/)     |
 | 树形DP    | [金明的预算方案](https://www.luogu.com.cn/problem/P1064)                                                           | 树形依赖背包             |
@@ -46,7 +47,6 @@
 |      | [Mad City](https://codeforces.com/problemset/problem/1873/H)                                                  |
 | DFS  | [Fish Graph](https://codeforces.com/problemset/problem/1817/B)                                                | DFS找环       |
 | 有向图  | [How Many Path](https://codeforces.com/contest/1547/problem/G)                                                | 强连通分量       |
-
 
 ## Tree
 
@@ -99,6 +99,10 @@
 |    | [Dogeforces](https://codeforces.com/contest/1494/problem/D)          | 递归构造               |
 
 ## 数学
-| 类型   | 题目                                                                        | 关键点        |
-|------|---------------------------------------------------------------------------|------------|
-| 组合数学 | [Product Transformation](https://codeforces.com/problemset/problem/852/F) | 组合数学 逆元 求余 |
+
+| 类型   | 题目                                                                        | 关键点           |
+|------|---------------------------------------------------------------------------|---------------|
+| 组合数学 | [Product Transformation](https://codeforces.com/problemset/problem/852/F) | 组合数学 逆元 求余    |
+| 组合数学 | [Devu and Flowers](https://codeforces.com/problemset/problem/451/E)       | 容斥原理 至少n个     |
+| 康托展开 | [Permutations Summation](https://codeforces.com/contest/501/problem/D)    | 阶乘 逆序对 树状数组二分 |
+| 裴蜀定理 | [Infinite Fence](https://codeforces.com/contest/1260/problem/C)           | 裴蜀定理 gcd      |
