@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+# @Time: 2024/5/21 17:23
+# @Author: yfwang
+# @File: 1612D.py
+# CRT
+
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()

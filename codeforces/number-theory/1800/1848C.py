@@ -3,11 +3,12 @@
 # @Author: yfwang
 # @File: 1848C.py
 # https://codeforces.com/problemset/problem/1848/C
+
 import math
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
