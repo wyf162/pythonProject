@@ -18,5 +18,6 @@ class RMQ:
                 self.f[i][j] = max(self.f[i - 1][j], self.f[i - 1][j + (1 << (i - 1))])
 
     def query(self, l, r):
+        # 区间[l, r]
         k = int(math.log2(r - l))
         return max(self.f[k][l], self.f[k][r - (1 << k)])
