@@ -36,11 +36,11 @@ for _tcn_ in range(tcn):
         while s - x < mi:
             x -= 1
         vis.add(x)
-        ans[l+i-1] = x
+        ans[l + i - 1] = x
         s -= x
         x -= 1
     curr = 1
-    for i in range(l-1):
+    for i in range(l - 1):
         while curr in vis:
             curr += 1
         ans[i] = curr
