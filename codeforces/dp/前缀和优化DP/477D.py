@@ -1,5 +1,12 @@
+# -*- coding : utf-8 -*-
+# @Time: 2024/5/24 17:54
+# @Author: yefei.wang
+# @File: 1867D.py
+# https://codeforces.com/problemset/problem/477/D
+
 import sys
 
+input = lambda: sys.stdin.readline().rstrip()
 # sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())

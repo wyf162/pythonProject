@@ -2,7 +2,6 @@
 # @Time: 2024/3/14 13:53
 # @Author: yfwang
 # @File: 1941E.py
-
 # https://codeforces.com/contest/1941/problem/E
 
 import sys

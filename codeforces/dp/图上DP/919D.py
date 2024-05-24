@@ -1,5 +1,12 @@
+# -*- coding : utf-8 -*-
+# @Time: 2024/5/24 17:57
+# @Author: yefei.wang
+# @File: 919D.py
+# https://codeforces.com/problemset/problem/919/D
+
 import sys
 from collections import deque
+input = lambda: sys.stdin.readline().rstrip()
 
 # sys.stdin = open('./../input.txt', 'r')
 I = lambda: int(input())
