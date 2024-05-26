@@ -43,6 +43,27 @@ for _tcn_ in range(tcn):
                 stk.append(y)
     fa[a] = -1
     # print(dfs)
+    ans = 0
+    c = b
+    for _ in range((depth[b] + 1) // 2):
+        c = fa[c]
+        ans += 1
+
+    fa = [-1] * n
+    depth = [0] * n
+    dfs = []
+    stk = [c]
+    fa[c] = n
+
+    while stk:
+        x = stk.pop()
+        dfs.append(x)
+        for y in g[x]:
+            if fa[y] == -1:
+                fa[y] = x
+                depth[y] = depth[x] + 1
+                stk.append(y)
+    fa[c] = -1
 
     size = [0] * n
     for x in dfs[::-1]:
@@ -50,5 +71,5 @@ for _tcn_ in range(tcn):
         if fa[x] >= 0:
             size[fa[x]] += size[x]
 
-    ans = 2 * (size[a] - 1) - max(depth) + depth[b]
+    ans += 2 * (size[c] - 1) - max(depth)
     print(ans)
