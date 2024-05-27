@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 623A.py
 # https://codeforces.com/problemset/problem/623/A
+# bipartite
 # 二分图判定  再次验证
 
 import sys
