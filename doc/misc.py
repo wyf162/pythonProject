@@ -1,7 +1,18 @@
 import sys, os, io
 from collections import defaultdict, Counter
+from random import getrandbits
 
 input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+
+RANDOM = getrandbits(32)
+
+
+class Wrapper(int):
+    def __init__(self, x):
+        int.__init__(x)
+
+    def __hash__(self):
+        return super(Wrapper, self).__hash__() ^ RANDOM
 
 
 def divisors(M):
