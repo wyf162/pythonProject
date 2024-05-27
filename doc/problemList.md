@@ -37,16 +37,17 @@
 
 ## Graph Theory
 
-| 类型   | 题目                                                                                                            | 关键点         |
-|------|---------------------------------------------------------------------------------------------------------------|-------------|
-| 拓扑排序 |                                                                                                               |
-| 最短路  | [min Cost](https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/)                 |             |
-| 最短路  | [Buy a Ticket](https://codeforces.com/problemset/problem/938/D)                                               | 转化为Dijkstra |
+| 类型   | 题目                                                                                                            | 关键点               |
+|------|---------------------------------------------------------------------------------------------------------------|-------------------|
+| 拓扑排序 |                                                                                                               |                   |
+| 最短路  | [min Cost](https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/)                 |                   |
+| 最短路  | [Buy a Ticket](https://codeforces.com/problemset/problem/938/D)                                               | Dijkstra          |
+| 最短路  | [Pokeman Arena](https://codeforces.com/problemset/problem/1936/C)                                             | 最短路 建图优化 Dijkstra |
 | 基环树  | [count Visited Nodes](https://leetcode.cn/problems/count-visited-nodes-in-a-directed-graph/description/)      |
-|      | [maximum Invitations](https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/description/) |
-|      | [Mad City](https://codeforces.com/problemset/problem/1873/H)                                                  |
-| DFS  | [Fish Graph](https://codeforces.com/problemset/problem/1817/B)                                                | DFS找环       |
-| 有向图  | [How Many Path](https://codeforces.com/contest/1547/problem/G)                                                | 强连通分量       |
+|      | [maximum Invitations](https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/description/) |                   |
+|      | [Mad City](https://codeforces.com/problemset/problem/1873/H)                                                  |                   |
+| DFS  | [Fish Graph](https://codeforces.com/problemset/problem/1817/B)                                                | DFS找环             |
+| 有向图  | [How Many Path](https://codeforces.com/contest/1547/problem/G)                                                | 强连通分量             |
 
 ## Tree
 
