@@ -2,8 +2,8 @@
 # @Time: 2024/1/29 20:54
 # @Author: yefei.wang
 # @File: 1452D.py
-
-import math
+# https://codeforces.com/problemset/problem/1452/D
+# combinatorics
 
 modm = 998244353
 

@@ -2,6 +2,7 @@
 # @Time: 2024/4/2 14:25
 # @Author: yfwang
 # @File: 1950G.py
+# bitmasks
 
 import sys
 

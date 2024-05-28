@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 696B.py
 # https://codeforces.com/problemset/problem/696/B
+# probabilities
 
 import sys
 

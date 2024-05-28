@@ -2,6 +2,7 @@
 # @Time: 2024/5/14 9:29
 # @Author: yfwang
 # @File: 914C.py
+# combinatorics
 
 import sys
 from types import GeneratorType
@@ -59,6 +60,7 @@ for _tcn_ in range(tcn):
         hst[i] = c
     # print(max(hst))
     cache = dict()
+
 
     @bootstrap
     def dfs(i, is_limit, cnt):

@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 859D.py
 # https://codeforces.com/problemset/problem/859/D
+# probabilities
 
 import sys
 

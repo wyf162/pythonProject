@@ -2,6 +2,8 @@
 # @Time: 2024/4/10 11:23
 # @Author: yfwang
 # @File: 1102F.py
+# https://codeforces.com/problemset/problem/1102/F
+# bitmasks
 
 import sys
 

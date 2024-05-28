@@ -2,6 +2,8 @@
 # @Time: 2024/5/9 17:40
 # @Author: yfwang
 # @File: 148D.py
+# https://codeforces.com/problemset/problem/148/D
+# probabilities
 
 import sys
 from collections import deque

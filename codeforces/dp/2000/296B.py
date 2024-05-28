@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 296B.py
 # https://codeforces.com/problemset/problem/296/B
+# combinatorics
 
 import sys
 

@@ -57,22 +57,3 @@ for _tcn_ in range(tcn):
 
         rets[i] = x1 + x2 + 1
     print(*rets)
-    # for i in range(n + 1):
-    #     x1 = 0
-    #     for j in range(i - 1, -1, -1):
-    #         if x1 % 2 == 0 and s[j] == 'L':
-    #             x1 += 1
-    #         elif x1 % 2 == 1 and s[j] == 'R':
-    #             x1 += 1
-    #         else:
-    #             break
-    #     x2 = 0
-    #     for j in range(i, n, 1):
-    #         if x2 % 2 == 0 and s[j] == 'R':
-    #             x2 += 1
-    #         elif x2 % 2 == 1 and s[j] == 'L':
-    #             x2 += 1
-    #         else:
-    #             break
-    #     rets[i] = x1 + x2 + 1
-    # print(*rets)
