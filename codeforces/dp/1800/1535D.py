@@ -1,3 +1,10 @@
+# -*- coding : utf-8 -*-
+# @Time: 2024/1/22 22:34
+# @Author: yefei.wang
+# @File: 1535D.py
+# https://codeforces.com/problemset/problem/1535/D
+# trees
+
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()

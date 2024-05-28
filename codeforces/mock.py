@@ -8,9 +8,11 @@ E9 = 10 ** 9
 E18 = 10 ** 18
 
 tcn = 1
-print(tcn)
+# print(tcn)
 for _tcn_ in range(tcn):
-    n = 2000
+    n = 3000
     print(n)
-    nums = [random.randint(1, E9) for _ in range(n)]
+    nums = [10 for _ in range(n)]
     print(*nums)
+    for i in range(n-1):
+        print(i+1, i+2, 1)

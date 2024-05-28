@@ -1,3 +1,10 @@
+# -*- coding : utf-8 -*-
+# @Time: 2024/2/11 21:12
+# @Author: yefei.wang
+# @File: 839C.py
+# https://codeforces.com/problemset/problem/839/C
+# trees
+
 import sys
 from types import GeneratorType
 

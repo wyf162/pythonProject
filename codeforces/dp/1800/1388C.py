@@ -2,6 +2,8 @@
 # @Time: 2024/2/8 20:49
 # @Author: yefei.wang
 # @File: 1388C.py
+# https://codeforces.com/problemset/problem/1388/C
+# trees
 
 import sys
 

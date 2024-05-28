@@ -3,7 +3,7 @@
 # @Author: yfwang
 # @File: 1436D.py
 # https://codeforces.com/contest/1436/problem/D
-
+# trees
 
 import sys
 
@@ -24,10 +24,10 @@ nums = LI()
 
 dp = nums[:]
 size = [0] * n
-for i in range(n-1, 0, -1):
+for i in range(n - 1, 0, -1):
     if size[i] == 0:
         size[i] = 1
     dp[fa[i]] += dp[i]
     size[fa[i]] += size[i]
 
-print(max((a-1) // b + 1 for a, b in zip(dp, size)))
+print(max((a - 1) // b + 1 for a, b in zip(dp, size)))

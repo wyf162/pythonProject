@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Time: 2024/5/28 21:49
+# @Author: yfwang
+# @File: 118D.py
+# https://codeforces.com/problemset/problem/118/D
 import sys
 from collections import Counter
 
