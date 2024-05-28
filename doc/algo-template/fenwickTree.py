@@ -65,24 +65,43 @@ class FenwickTree:
         self.tot += delta
 
     def bisect_min_larger(self, num):
-        if num <= 0: return -1
+        if num <= 0:
+            return -1
         note = -1
         tmp = 0
         for power in self.powers:
-            if note + power >= self.n or \
-                tmp + self.bit[note + power] >= num: continue
+            # bisect_left >= and bisect_right >
+            if note + power >= self.n or tmp + self.bit[note + power] >= num:
+                continue
             note += power
             tmp += self.bit[note]
         return note + 1
 
     def bisect_max_smaller(self, num):
-        if num > self.tot: return self.n
+        if num > self.tot:
+            return self.n
         note = -1
         tmp = 0
         for power in self.powers:
-            if note + power >= self.n or \
-                tmp + self.bit[note + power] >= num: continue
+            # bisect_left >= and bisect_right >
+            if note + power >= self.n or tmp + self.bit[note + power] >= num:
+                continue
             note += power
             tmp += self.bit[note]
         return note
 
+
+if __name__ == '__main__':
+    fwt = FenwickTree(5)
+    fwt.add(0, 1)
+    fwt.add(1, 3)
+    fwt.add(2, 5)
+    fwt.add(3, 6)
+    i1 = fwt.bisect_min_larger(2)
+    print(i1, fwt.sum(i1 - 1))
+    i1 = fwt.bisect_min_larger(4)
+    print(i1, fwt.sum(i1 - 1))
+    i1 = fwt.bisect_min_larger(0)
+    print(i1, fwt.sum(i1 - 1))
+    i1 = fwt.bisect_min_larger(100)
+    print(i1, fwt.sum(i1 - 1))
