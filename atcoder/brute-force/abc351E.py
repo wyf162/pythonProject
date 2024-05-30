@@ -34,12 +34,21 @@ def get_dist(p1, p2):
 
 
 def compute(points):
-    dis = 0
-    m = len(points)
+    xs, ys = [], []
+    for x, y in points:
+        xs.append(x + y)
+        ys.append(x - y)
+    xs.sort()
+    ys.sort()
+    m = len(xs)
+    tx, ty = 0, 0
+    ret = 0
     for i in range(m):
-        for j in range(i + 1, m):
-            dis += get_dist(points[i], points[j])
-    return dis
+        ret += xs[i] * i - tx
+        ret += ys[i] * i - ty
+        tx += xs[i]
+        ty += ys[i]
+    return ret // 2
 
 
 ans = compute(points0) + compute(points1)
