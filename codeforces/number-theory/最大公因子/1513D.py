@@ -2,12 +2,13 @@
 # @Time: 2024/5/29 21:35
 # @Author: yefei.wang
 # @File: 1513D.py
+# mst gcd
 
 import sys
 import math
 
 input = lambda: sys.stdin.readline().rstrip('\r\n')
-sys.stdin = open('./../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
@@ -41,8 +42,9 @@ for _tcn_ in range(tcn):
                 r += 1
             else:
                 break
-        for i in range(l+1, r):
-            vis[i] = 1
+        vis[i] = 1
+        for j in range(l + 2, r - 1):
+            vis[j] = 1
 
         rest -= (r - l - 2)
         ans += (r - l - 2) * x
