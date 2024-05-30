@@ -8,7 +8,7 @@ E9 = 10 ** 9
 E18 = 10 ** 18
 
 tcn = 1
-# print(tcn)
+print(tcn)
 for _tcn_ in range(tcn):
     n = 3000
     print(n)
