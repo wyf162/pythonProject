@@ -6,8 +6,8 @@
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
-sys.stdout = open('../output.txt', 'w')
+sys.stdin = open('../../input.txt', 'r')
+sys.stdout = open('../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -42,8 +42,4 @@ for _tcn_ in range(tcn):
                     break
             left_zero = 0
     print(ans)
-    # ans = 0
-    # for i in range(1, n+1):
-    #     t = bin(i)[2:].zfill(i)
-    #     ans += s.count(t)
-    # print(ans)
+
