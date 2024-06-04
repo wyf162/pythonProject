@@ -2,6 +2,7 @@
 # @Time: 2024/6/3 21:39
 # @Author: yefei.wang
 # @File: 895D.py
+# DP combinatorics
 
 import sys
 
@@ -40,7 +41,7 @@ class Factorial:
 
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -50,12 +51,13 @@ LGMI = lambda: list(GMI())
 YN = lambda x: print('YES' if x else 'NO')
 mod = 1000000007
 
-fact = Factorial(10 ** 1, mod)
 
 tcn = 1
 for _tcn_ in range(tcn):
     s = input()
     t = input()
+    fact = Factorial(len(s) + 5, mod)
+
     nums = [0] * 26
     for c in s:
         nums[ord(c) - ord('a')] += 1
@@ -63,31 +65,35 @@ for _tcn_ in range(tcn):
     tot = fact.fac(n)
     for j in range(26):
         tot *= fact.fac_inv(nums[j])
-    print(tot)
+        tot %= mod
+    # print(tot)
 
 
-    def f(ss, cnt):
-        nums = [0] * 26
-        for c in ss:
-            nums[ord(c) - ord('a')] += 1
+    def f(s1, s2, cnt):
+        nums1 = [0] * 26
+        for c in s1:
+            nums1[ord(c) - ord('a')] += 1
 
         ans = 0
-        n = len(s)
-        for i in range(n):
-            cur = ord(s[i]) - ord('a')
+        for i in range(len(s2)):
+            cur = ord(s2[i]) - ord('a')
             for j in range(cur):
-                if nums[j] == 0:
+                if nums1[j] == 0:
                     continue
-                ans += cnt * fact.fac(n - j - 1) * fact.fac_inv(n - j) * fact.fac(nums[j]) * fact.fac_inv(nums[j] - 1)
+                ans += cnt * fact.inv(n - i) * nums1[j]
                 ans %= mod
-            cnt = cnt * fact.fac(n - i - 1) * fact.fac_inv(n - i) * fact.fac(nums[i]) * fact.fac_inv(nums[i] - 1)
-            cnt %= mod
-            nums[cur] -= 1
+            if nums1[cur]:
+                cnt = cnt * fact.inv(n - i) * nums1[cur]
+                cnt %= mod
+                nums1[cur] -= 1
+            else:
+                break
         return ans
 
 
-    ans1 = f(s, tot)
-    ans2 = f(s, tot)
-    print(ans1, ans2)
-    ans0 = ans2 - ans1 - 0
+    ans1 = f(s, s, tot)
+    ans2 = f(s, t, tot)
+    # print(ans1, ans2)
+    ans0 = ans2 - ans1 - 1
+    ans0 %= mod
     print(ans0)
