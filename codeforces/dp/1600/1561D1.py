@@ -15,7 +15,7 @@ TI = lambda: tuple(MI())
 LGMI = lambda: list(GMI())
 YN = lambda x: print('YES' if x else 'NO')
 
-tcn = 10
+tcn = 1
 for _tcn_ in range(tcn):
     n, mod = MI()
 
@@ -25,7 +25,7 @@ for _tcn_ in range(tcn):
     for i in range(1, n + 1):
         pre_sum[i] = pre_sum[i - 1] + diff[i]
         pre_sum[i] %= mod
-        cur = pre_sum[i] or 1
+        cur = pre_sum[i] if i > 1 else 1
 
         diff[i + 1] += cur
 
