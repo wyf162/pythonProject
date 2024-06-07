@@ -1,28 +1,11 @@
+# -*- coding: utf-8 -*-
+# @Time: 2024/6/7 10:56
+# @Author: yfwang
+# @File: 1461D.py
 import bisect
 import sys
-from types import GeneratorType
+
 from itertools import accumulate
-
-
-def bootstrap(f, stack=[]):
-    def wrappedfunc(*args, **kwargs):
-        if stack:
-            return f(*args, **kwargs)
-        else:
-            to = f(*args, **kwargs)
-            while True:
-                if type(to) is GeneratorType:
-                    stack.append(to)
-                    to = next(to)
-                else:
-                    stack.pop()
-                    if not stack:
-                        break
-                    to = stack[-1].send(to)
-            return to
-
-    return wrappedfunc
-
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../input.txt', 'r')
@@ -46,22 +29,20 @@ for _tcn_ in range(tcn):
     st = set()
     st.add(pre_sum[-1])
 
-
-    @bootstrap
-    def func(i, j):
+    stk = [(0, n - 1)]
+    while stk:
+        i, j = stk.pop()
         if i > j or a[i] == a[j]:
-            yield
+            continue
         if i == j:
             st.add(a[i])
-            yield
+            continue
         mid = (a[i] + a[j]) // 2
         k = bisect.bisect_right(a, mid, lo=i)
         st.add(pre_sum[k] - pre_sum[i])
         st.add(pre_sum[j + 1] - pre_sum[k])
-        yield func(i, k - 1)
-        yield func(k, j)
-        yield
+        stk.append((i, k-1))
+        stk.append((k, j))
 
-    func(0, n - 1)
     for v in queries:
         Yn(v in st)
