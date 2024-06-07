@@ -2,8 +2,10 @@
 # @Time: 2024/6/6 22:48
 # @Author: yefei.wang
 # @File: C.py
+# lcm
 
 import sys
+import math
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../../input.txt', 'r')
@@ -21,4 +23,13 @@ tcn = I()
 for _tcn_ in range(tcn):
     n = I()
     nums = LI()
+    z = math.lcm(*nums)
+    tot = 0
+    for i in range(n):
+        tot += z // nums[i]
 
+    if tot >= z:
+        print(-1)
+    else:
+        ans = [z // nums[i] for i in range(n)]
+        print(' '.join(str(x) for x in ans))

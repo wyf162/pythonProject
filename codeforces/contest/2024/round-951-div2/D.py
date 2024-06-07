@@ -5,8 +5,56 @@
 
 import sys
 
+from typing import Sequence, List
+
+
+def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> List[int]:
+    """
+    Given two strings text and pattern, return the list of start indexes in text that matches with the pattern
+    using knuth_morris_pratt algorithm.
+
+    Args:
+        text: Text to search
+        pattern: Pattern to search in the text
+    Returns:
+        List of indices of patterns found
+
+    Example:
+        # >>> knuth_morris_pratt('hello there hero!', 'he')
+        [0, 7, 12]
+
+    If idx is in the list, text[idx : idx + M] matches with pattern.
+    Time complexity of the algorithm is O(N+M), with N and M the length of text and pattern, respectively.
+    """
+    n = len(text)
+    m = len(pattern)
+    pi = [0 for i in range(m)]
+    i = 0
+    j = 0
+    # making pi table
+    for i in range(1, m):
+        while j and pattern[i] != pattern[j]:
+            j = pi[j - 1]
+        if pattern[i] == pattern[j]:
+            j += 1
+            pi[i] = j
+    # finding pattern
+    j = 0
+    ret = []
+    for i in range(n):
+        while j and text[i] != pattern[j]:
+            j = pi[j - 1]
+        if text[i] == pattern[j]:
+            j += 1
+            if j == m:
+                ret.append(i - m + 1)
+                j = pi[j - 1]
+    return ret
+
+
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../../input.txt', 'r')
+sys.stdout = open('../../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -35,36 +83,38 @@ for _tcn_ in range(tcn):
             break
     if len(suf) == k:
         suf1 = '0' * (k * 2)
-        i1 = s.find(suf1) + k
-        if i1 >= k:
+        ret1 = knuth_morris_pratt(s, suf1)
+        if ret1:
+            i1 = ret1[0] + k
             t = s[i1:] + s[:i1][::-1]
             ans = i1 - 2 * k
-            # print(t)
         else:
             suf2 = '1' * (k * 2)
-            i2 = s.find(suf2) + k
-            if i2 >= k:
+            ret2 = knuth_morris_pratt(s, suf2)
+            if ret2:
+                i2 = ret2[0] + k
                 t = s[i2:] + s[:i2][::-1]
                 ans = i2 - 2 * k
-                # print(t)
             else:
-                ans = 1
+                ans = n - 2 * k
                 t = s
-                # print(t)
+    elif len(suf) > k:
+        t = '#'
     else:
         plc = '0' if s[-1] == '1' else '1'
         suf1 = plc + s[-1] * (k - len(suf)) + plc
-        i1 = s.find(suf1) + k - len(suf) + 1
-        if i1 >= k - len(suf) + 1:
+        ret1 = knuth_morris_pratt(s, suf1)
+        if ret1:
+            i1 = ret1[0] + k - len(suf) + 1
             t = s[i1:] + s[:i1][::-1]
             ans = i1 - 2 * k
-            # print(t)
+
         else:
             suf2 = plc + s[-1] * (k + k - len(suf)) + plc
-            i2 = s.find(suf2) + k - len(suf) + 1
-            if i2 >= k - len(suf) + 1:
+            ret2 = knuth_morris_pratt(s, suf2)
+            if ret2:
+                i2 = ret2[0] + k - len(suf) + 1
                 t = s[i2:] + s[:i2][::-1]
-                # print(t)
                 ans = i2 - 2 * k
             else:
                 t = '#'
@@ -72,6 +122,7 @@ for _tcn_ in range(tcn):
     cnt = len(s) // k
     c1 = cnt // 2
     c2 = cnt % 2
+    # print(t)
     if t[0] == '0':
         tt = ('0' * k + '1' * k) * c1 + ('0' * k) * c2
         if tt == t:
