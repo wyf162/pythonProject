@@ -1,11 +1,10 @@
 # -*- coding : utf-8 -*-
-# @Time: 2024/6/7 19:21
+# @Time: 2024/6/8 13:01
 # @Author: yefei.wang
-# @File: C.py
+# @File: D.py
 
 import sys
 import typing
-import bisect
 
 
 class DSU:
@@ -22,9 +21,6 @@ class DSU:
         self.parent_or_size = [-1] * n
 
     def merge(self, a: int, b: int) -> int:
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
-
         x = self.leader(a)
         y = self.leader(b)
 
@@ -40,13 +36,10 @@ class DSU:
         return x
 
     def same(self, a: int, b: int) -> bool:
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
 
         return self.leader(a) == self.leader(b)
 
     def leader(self, a: int) -> int:
-        assert 0 <= a < self._n
 
         parent = self.parent_or_size[a]
         while parent >= 0:
@@ -61,8 +54,6 @@ class DSU:
         return a
 
     def size(self, a: int) -> int:
-        assert 0 <= a < self._n
-
         return -self.parent_or_size[self.leader(a)]
 
     def groups(self) -> typing.List[typing.List[int]]:
@@ -76,7 +67,7 @@ class DSU:
 
 
 input = lambda: sys.stdin.readline().rstrip()
-# sys.stdin = open('../../../input.txt', 'r')
+sys.stdin = open('../../../input.txt', 'r')
 # sys.stdout = open('../../../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
@@ -87,38 +78,60 @@ YN = lambda x: print('Yes' if x else 'No')
 mod = 1000000007
 mod2 = 998244353
 
+
+def count(c, mi, mx):
+    if mi > c:
+        return 0
+    else:
+        x1 = c - mi + 1
+        x2 = max(c - mx + 1, 1)
+        ret = (x1 + x2) * (x1 - x2 + 1) // 2
+        return ret
+
+
 n = I()
 A = LI()
 m = I()
-queries = [LI() for i in range(m)]
+queries = [LI() + [i] for i in range(m)]
+queries.sort(key=lambda x: -x[0])
 
 xi = [(i, a) for i, a in enumerate(A)]
 xi.sort(key=lambda x: -x[1])
 vis = [0] * n
 dsu = DSU(n)
 
-B = []
-C = []
+hst = dict()
+pre_cc = []
+j = 0
+ans = [-1] * m
 
 for i, a in xi:
     vis[i] = 1
-    if i - 1 >= 0 and vis[i - 1]:
+    if i - 1 >= 0 and vis[i - 1] and not dsu.same(i-1,i):
+        if dsu.leader(i - 1) in hst:
+            del hst[dsu.leader(i - 1)]
+        if dsu.leader(i) in hst:
+            del hst[dsu.leader(i)]
         dsu.merge(i - 1, i)
-    if i + 1 < n and vis[i + 1]:
+    if i + 1 < n and vis[i + 1] and not dsu.same(i+1, i):
+        if dsu.leader(i + 1) in hst:
+            del hst[dsu.leader(i + 1)]
+        if dsu.leader(i) in hst:
+            del hst[dsu.leader(i)]
         dsu.merge(i + 1, i)
-    B.append(a)
-    if C:
-        C.append(max(C[-1], dsu.size(i)))
-    else:
-        C.append(dsu.size(i))
+    hst[dsu.leader(i)] = dsu.size(i)
 
+    while j < m and queries[j][0] > a:
+        _, mi, mx, oi = queries[j]
+        cnt = 0
+        for c in pre_cc:
+            cnt += count(c, mi, mx)
+        ans[oi] = cnt
+        j += 1
+    pre_cc = list(hst.values())
 
-B.reverse()
-C.reverse()
+for _, mi, mx, oi in queries:
+    if ans[oi] == -1:
+        ans[oi] = count(n, mi, mx)
 
-for val, mi, mx in queries:
-    i = bisect.bisect_left(B, val)
-    if i < n and C[i] >= mi:
-        YN(True)
-    else:
-        YN(False)
+print('\n'.join(str(x) for x in ans))
