@@ -25,10 +25,11 @@ E18 = 10 ** 18
 tcn = 1
 # print(tcn)
 for _tcn_ in range(tcn):
-    N = 100
-    print(N)
-    for _ in range(N):
-        print(random.randint(0, E5), random.randint(0, E5))
-
-
-
+    n = 10000
+    print(n)
+    nums = [random.randint(1, 100) for _ in range(n)]
+    print(*nums)
+    m = 1000
+    print(m)
+    for i in range(m):
+        print(random.randint(1, 100), random.randint(1, 100), random.randint(1, n))
