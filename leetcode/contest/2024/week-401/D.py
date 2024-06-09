@@ -2,11 +2,13 @@
 # @Time: 2024/6/9 10:55
 # @Author: yefei.wang
 # @File: D.py
-import bisect
-import random
+
+import sys
 from typing import List
 
-from sortedcontainers import SortedSet, SortedList
+from sortedcontainers import SortedSet
+
+sys.set_int_max_str_digits(999999999)
 
 
 class Solution:
@@ -33,13 +35,25 @@ class Solution:
                 res = i
         return res
 
+    def maxTotalReward2(self, rewardValues: List[int]) -> int:
+        mx = max(rewardValues)
+        MASK = (1 << (mx * 2 + 1)) - 1
+        dp = 1
+        for x in sorted(rewardValues):
+            mask = (1 << x) - 1
+            val = dp & mask
+            dp |= (val << x) | (1 << x)
+            dp &= MASK
+
+        return dp.bit_length() - 1
+
 
 if __name__ == '__main__':
     # rewardValues = [1, 1, 3, 3]
     # rewardValues = [1, 2, 4, 8, 16]
     # rewardValues = [10, 4, 9, 18]
     # rewardValues = [1, 6, 4, 3, 2]
-    rewardValues = [i+1 for i in range(5*10**4)]
+    rewardValues = [i + 1 for i in range(5 * 10 ** 4)]
     # rewardValues = [random.randint(1, 10000) for _ in range(100)]
     ret1 = Solution().maxTotalReward_bf(rewardValues)
     print(ret1)
