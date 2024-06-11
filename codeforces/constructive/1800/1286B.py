@@ -2,13 +2,14 @@
 # @Time: 2024/6/10 10:55
 # @Author: yefei.wang
 # @File: 1286B.py
+# trees
 
 import sys
 
 input = sys.stdin.readline
 
 n = int(input())
-d = [[] for _ in range(n + 1)]
+g = [[] for _ in range(n + 1)]
 x = [[] for _ in range(n + 1)]
 w = [0] * (n + 1)
 p = [0] * (n + 1)
@@ -20,14 +21,15 @@ for i in range(n):
         z = i + 1
         q.append(z)
     else:
-        d[i + 1].append(a)
-        d[a].append(i + 1)
+        g[i + 1].append(a)
+        g[a].append(i + 1)
     w[i + 1] = b
+
 while q:
     a = q.pop()
     if a > 0:
         q.append(~a)
-        for i in d[a]:
+        for i in g[a]:
             if i != p[a]:
                 p[i] = a
                 q.append(i)
