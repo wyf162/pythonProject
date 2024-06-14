@@ -169,15 +169,27 @@ class LazySegmentTree:
 
 
 if __name__ == '__main__':
-    n = 10
+    n = 8
     # 合并左右区间的值
-    op = lambda a, b: a | b
+    op = lambda a, b: a + b
     # 线段树维护的值的幺元
     e = 0
     # 父结点的懒标记更新子结点的值
-    mapping = lambda f, x: x if f == 0 else f
+    mapping = lambda f, x: f if f else x
     # 父结点的懒标记更新子结点的懒标记(合并)
-    composition = lambda f, g: g if f == 0 else g
+    composition = lambda f, g: f if f else g
     # 懒标记的幺元函数
     id_ = 0
     Lst = LazySegmentTree(n, op, e, mapping, composition, id_)
+    Lst.apply(0, 3, 2)
+    for i in range(n):
+        print(Lst.get(i), end=' ')
+    print()
+    Lst.apply(0, 5, 4)
+    Lst.apply(0, 1, 3)
+    for i in range(n):
+        print(Lst.get(i), end=' ')
+    print()
+    for i in range(n):
+        print(Lst.prod(i, n), end=' ')
+    print()
