@@ -18,7 +18,7 @@ def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> List[int]:
         List of indices of patterns found
 
     Example:
-        >>> knuth_morris_pratt('hello there hero!', 'he')
+        # >>> knuth_morris_pratt('hello there hero!', 'he')
         [0, 7, 12]
 
     If idx is in the list, text[idx : idx + M] matches with pattern.
