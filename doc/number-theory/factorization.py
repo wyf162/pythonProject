@@ -27,7 +27,7 @@ class Factorization:
                     divisors.append(divisors[i] * (p ** j))
         return divisors
 
-    def get_factors(self, n):
+    def get_factors(self, n, unique=True):
         factors = []
         while n != 1:
             p = self.sieve[n]
@@ -37,6 +37,8 @@ class Factorization:
             while self.sieve[n] == p:
                 cnt += 1
                 n //= p
+                if unique:
+                    continue
                 factors.append(p)
         return factors
 
