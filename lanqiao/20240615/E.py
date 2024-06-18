@@ -2,6 +2,7 @@
 # @Time: 2024/6/15 20:37
 # @Author: yefei.wang
 # @File: E.py
+# gcd
 
 
 import math
