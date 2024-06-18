@@ -18,9 +18,11 @@ mod2 = 998244353
 
 n, m = MI()
 ops = [LI() for _ in range(m)]
-mx = 10 ** 5
-d = [0] * (n + 2 * mx + 5)
+mx = 2 * 10 ** 5
+
 d2 = [0] * (n + 2 * mx + 5)
+d = [0] * (n + 2 * mx + 5)
+f = [0] * (n + 2 * mx + 5)
 
 for i in range(m):
     a, b, c = ops[i]
@@ -33,9 +35,14 @@ for i in range(m):
 
 for i in range(n + mx + 1):
     if i > 0:
-        d2[i] += d2[i - 1]
-        d[i] += d[i - 1] + d2[i]
+        d[i] = d[i - 1] + d2[i]
     else:
-        d[i] += d2[i]
+        d[i] = d2[i]
 
-print(*d[mx + 1:mx + 1 + n])
+for i in range(n + mx + 1):
+    if i > 0:
+        f[i] = f[i - 1] + d[i]
+    else:
+        f[i] = d[i]
+
+print(*f[mx + 1:mx + 1 + n])
