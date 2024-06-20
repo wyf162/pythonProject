@@ -2,11 +2,13 @@
 # @Time: 2024/6/19 22:57
 # @Author: yefei.wang
 # @File: C.py
+# two points
 
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../input.txt', 'r')
+sys.stdout = open('../output.txt', 'w')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -22,37 +24,29 @@ tcn = I()
 for _tcn_ in range(tcn):
     n = I()
     P = LI()
-    f = [0] * n
-    f[n - 1] = 1
-    for i in range(n - 2, -1, -1):
-        if P[i + 1] > P[i]:
-            f[i] = 1
-        else:
-            break
-
-    L = 1
-    R = n
-    ans = 1
-    for i in range(1, n - 1):
-        a, b, c = P[i - 1], P[i], P[i + 1]
-        if a < b < c:
-            continue
-        if a > b > c:
+    ans = None
+    for i in range(1, n-1):
+        if P[i-1] > P[i] > P[i+1]:
             ans = 0
             break
-        if a < b > c > a:
-            L = max(L, b - c)
-        if c < b > a > c:
-            L = max(L, a - c)
-            L = max(L, b - c)
-        if a > b < c:
-            L = max(L, a - b)
-            if f[i] == 0:
-                R = min(R, c - b)
+    if ans is not None:
+        print(ans)
+        continue
 
-    if ans == 0 or L > R:
-        ans = 0
-        print(ans)
+    lo, hi = 0, n
+    for i in range(1, n):
+        if P[i - 1] > P[i]:
+            lo = max(lo, P[i - 1] - P[i])
+    cur = n
+    for i in range(1, n):
+        if P[i] > P[i-1]:
+            cur = max(cur, P[i] - P[i-1])
+        else:
+            hi = min(hi, cur)
+            cur = 0
+    if lo > hi:
+        print(0)
     else:
-        ans = (L + R) * (R - L + 1) // 2
-        print(ans)
+        print((lo + hi) * (hi - lo + 1) // 2)
+
+# 3 1 2 5 4
