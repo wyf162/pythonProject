@@ -110,8 +110,9 @@
 
 ## MISC
 
-| 类型 | 题目                                                                                   | 关键点             |
-|----|--------------------------------------------------------------------------------------|-----------------|
-| 排列 | [我算算算](https://ac.nowcoder.com/acm/contest/82758/H)                                  | permutation mex |
-| 排列 | [统计逆序对方案数](https://leetcode.cn/problems/count-the-number-of-inversions/description/) | permutation DP  |
-| 排列 | [Permutations Summation](https://codeforces.com/problemset/problem/501/D)            | 康托展开            |
+| 类型 | 题目                                                                                   | 关键点     |
+|----|--------------------------------------------------------------------------------------|---------|
+| 排列 | [我算算算](https://ac.nowcoder.com/acm/contest/82758/H)                                  | mex     |
+| 排列 | [统计逆序对方案数](https://leetcode.cn/problems/count-the-number-of-inversions/description/) | 逆序对     |
+| 排列 | [Lucky Permutation](https://codeforces.com/problemset/problem/1768/D)                | 逆序对 并查集 |
+| 排列 | [Permutations Summation](https://codeforces.com/problemset/problem/501/D)            | 康托展开    |
