@@ -116,3 +116,4 @@
 | 排列 | [统计逆序对方案数](https://leetcode.cn/problems/count-the-number-of-inversions/description/) | 逆序对     |
 | 排列 | [Lucky Permutation](https://codeforces.com/problemset/problem/1768/D)                | 逆序对 并查集 |
 | 排列 | [Permutations Summation](https://codeforces.com/problemset/problem/501/D)            | 康托展开    |
+| 排列 | [Restore the Permutation](https://codeforces.com/contest/1759/problem/G)             | 字典序     |
