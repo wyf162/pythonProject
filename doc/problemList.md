@@ -107,3 +107,11 @@
 | 组合数学 | [Devu and Flowers](https://codeforces.com/problemset/problem/451/E)       | 容斥原理 至少n个     |
 | 康托展开 | [Permutations Summation](https://codeforces.com/contest/501/problem/D)    | 阶乘 逆序对 树状数组二分 |
 | 裴蜀定理 | [Infinite Fence](https://codeforces.com/contest/1260/problem/C)           | 裴蜀定理 gcd      |
+
+## MISC
+
+| 类型 | 题目                                                                                   | 关键点             |
+|----|--------------------------------------------------------------------------------------|-----------------|
+| 排列 | [我算算算](https://ac.nowcoder.com/acm/contest/82758/H)                                  | permutation mex |
+| 排列 | [统计逆序对方案数](https://leetcode.cn/problems/count-the-number-of-inversions/description/) | permutation DP  |
+| 排列 | [Permutations Summation](https://codeforces.com/problemset/problem/501/D)            | 康托展开            |
