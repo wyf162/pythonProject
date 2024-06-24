@@ -3,6 +3,7 @@
 # @Author: yfwang
 # @File: 1862F.py
 # https://codeforces.com/problemset/problem/1862/F
+# knapsack
 
 import sys
 
