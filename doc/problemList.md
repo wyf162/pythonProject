@@ -27,6 +27,7 @@
 | LC3116  | [划分数组得到最小值之和](https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/solutions/)              | DP 单调队列            |
 | 矩阵乘法    | [Neural Network Country](https://codeforces.com/problemset/problem/852/B)                                   | 快速矩阵乘  todo        |
 | 期望DP    | [Assimilation IV](https://codeforces.com/problemset/problem/1525/E)                                         | todo 组合数学 期望DP     |
+|         | [Intercity Travelling](https://codeforces.com/problemset/problem/1009/E)                                    | 期望DP               |
 
 ## Greedy
 
