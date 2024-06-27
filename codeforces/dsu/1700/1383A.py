@@ -1,7 +1,10 @@
-import sys
+# -*- coding : utf-8 -*-
+# @Time: 2024/2/9 14:21
+# @Author: yefei.wang
+# @File: 1383A.py
 
+import sys
 import typing
-from collections import Counter
 
 
 class DSU:
@@ -72,7 +75,7 @@ class DSU:
 
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -82,27 +85,25 @@ YN = lambda x: print('YES' if x else 'NO')
 mod = 1000000007
 mod2 = 998244353
 
-n, d = MI()
-
-uf = DSU(n)
-mx = 1
-c = 1
-hst = Counter()
-hst[1] = n
-for _ in range(d):
-    x, y = GMI()
-    fx = uf.leader(x)
-    fy = uf.leader(y)
-    if fx == fy:
-        c += 1
-    else:
-        hst[uf.size(fx)] -= 1
-        hst[uf.size(fy)] -= 1
-        uf.merge(x, y)
-        hst[uf.size(x)] += 1
-
-    vs = []
-    for k, v in hst.items():
-        vs.extend([k] * v)
-    vs.sort(reverse=True)
-    print(sum(vs[:c]) - 1)
+tcn = I()
+for _tcn_ in range(tcn):
+    n = I()
+    s = list(input())
+    t = list(input())
+    ans = True
+    for a, b in zip(s, t):
+        if a > b:
+            ans = False
+            break
+    if ans is False:
+        print(-1)
+        continue
+    uf = DSU(20)
+    for a, b in zip(s, t):
+        i = ord(a) - ord('a')
+        j = ord(b) - ord('a')
+        uf.merge(i, j)
+    ans = 0
+    for gp in uf.groups():
+        ans += len(gp) - 1
+    print(ans)
