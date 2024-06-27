@@ -21,3 +21,4 @@ inf = 0x3f3f3f3f
 
 tcn = I()
 for _tcn_ in range(tcn):
+    continue
