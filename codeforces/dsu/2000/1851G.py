@@ -2,6 +2,7 @@
 # @Time: 2024/6/27 9:12
 # @Author: yfwang
 # @File: 1851G.py
+# sortings two points
 
 import sys
 import typing
@@ -75,7 +76,7 @@ class DSU:
 
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
@@ -90,14 +91,30 @@ tcn = I()
 for _tcn_ in range(tcn):
     n, m = MI()
     H = LI()
-    dsu = DSU(n * 2)
+    dsu = DSU(n)
     edges = [LGMI() for _ in range(m)]
-    for u, v in edges:
-        continue
 
     q = I()
     queries = []
     for i in range(q):
-        u, v, w = GMI()
-        w += 1
-        queries.append((u, v, w, i))
+        u, v, e = GMI()
+        e += 1
+        queries.append((u, v, e, i))
+
+    edges.sort(key=lambda x: max(H[x[0]], H[x[1]]))
+    queries.sort(key=lambda x: H[x[0]] + x[2])
+
+    ans = [False] * q
+    i1 = 0
+    for u, v, e, i in queries:
+        while i1 < m:
+            u1, v1 = edges[i1]
+            if H[u1] <= H[u] + e and H[v1] <= H[u] + e:
+                dsu.merge(u1, v1)
+                i1 += 1
+            else:
+                break
+        if dsu.same(u, v):
+            ans[i] = True
+    for i in range(q):
+        YN(ans[i])
