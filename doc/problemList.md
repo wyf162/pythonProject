@@ -94,6 +94,12 @@
 | disjoint set union | [BOX](https://atcoder.jp/contests/abc279/tasks/abc279_f)          | 模拟      |
 | ListNode           | [Berserk Monsters](https://codeforces.com/contest/1922/problem/D) | 模拟 todo |
 
+## string
+
+| 类型     | 题目                                                                          | 关键点    |
+|--------|-----------------------------------------------------------------------------|--------|
+| Z func | [Break The String](https://www.codechef.com/START140A/problems/BREAKSTRING) | cc140E |
+
 ## 构造题
 
 | 类型 | 题目                                                                   | 关键点                |
