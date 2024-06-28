@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-# @Time: 2024/6/27 9:12
-# @Author: yfwang
-# @File: 1851G.py
-
 import sys
+from collections import Counter
 import typing
 
 
@@ -74,30 +70,36 @@ class DSU:
         return list(filter(lambda r: r, result))
 
 
-input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
-TI = lambda: tuple(MI())
 LGMI = lambda: list(GMI())
-YN = lambda x: print('YES' if x else 'NO')
 mod = 1000000007
 mod2 = 998244353
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n, m = MI()
-    H = LI()
-    dsu = DSU(n * 2)
-    edges = [LGMI() for _ in range(m)]
-    for u, v in edges:
-        continue
+    n, k = MI()
+    s = input()
+    t = input()
 
-    q = I()
-    queries = []
-    for i in range(q):
-        u, v, w = GMI()
-        w += 1
-        queries.append((u, v, w, i))
+    uf = DSU(n)
+    for i in range(k, n):
+        uf.merge(i-k, i)
+    for i in range(k+1, n):
+        uf.merge(i-k-1, i)
+    ans = True
+    for group in uf.groups():
+        c1 = Counter()
+        c2 = Counter()
+        for i in group:
+            c1[s[i]] += 1
+            c2[t[i]] += 1
+        if c1 != c2:
+            ans = False
+    if ans:
+        print('YES')
+    else:
+        print('NO')

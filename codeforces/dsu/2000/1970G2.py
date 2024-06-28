@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+# @Time: 2024/6/25 17:06
+# @Author: yfwang
+# @File: 1970G2.py
+# graphs
+
 import sys
-from collections import Counter
 import typing
 
 
@@ -70,36 +75,66 @@ class DSU:
         return list(filter(lambda r: r, result))
 
 
-sys.stdin = open('../input.txt', 'r')
+input = lambda: sys.stdin.readline().rstrip()
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
+TI = lambda: tuple(MI())
 LGMI = lambda: list(GMI())
-mod = 1000000007
-mod2 = 998244353
+YN = lambda x: print('YES' if x else 'NO')
+inf = 10 ** 18
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n, k = MI()
-    s = input()
-    t = input()
+    n, m, k = MI()
+    edges = [LGMI() for _ in range(m)]
+    ans = inf
 
     uf = DSU(n)
-    for i in range(k, n):
-        uf.merge(i-k, i)
-    for i in range(k+1, n):
-        uf.merge(i-k-1, i)
-    ans = True
+    for j in range(m):
+        uf.merge(*edges[j])
+    a, b = 0, 0
+    c = -1
+    nums = []
     for group in uf.groups():
-        c1 = Counter()
-        c2 = Counter()
-        for i in group:
-            c1[s[i]] += 1
-            c2[t[i]] += 1
-        if c1 != c2:
-            ans = False
-    if ans:
-        print('YES')
-    else:
-        print('NO')
+        nums.append(len(group))
+        c += 1
+    nums.sort()
+    while nums:
+        if a < b:
+            a += nums.pop()
+        else:
+            b += nums.pop()
+    if a > 0 and b > 0:
+        ans = min(ans, a * a + b * b + c * k)
+
+    for i in range(m):
+        u, v = edges[i]
+        uf = DSU(n)
+        for j in range(m):
+            if i == j:
+                continue
+            uf.merge(*edges[j])
+        if uf.same(u, v):
+            continue
+        else:
+            a, b = uf.size(u), uf.size(v)
+            nums = []
+            c = 0
+            for group in uf.groups():
+                if uf.same(v, group[0]) or uf.same(u, group[0]):
+                    continue
+                else:
+                    nums.append(len(group))
+                    c += 1
+            nums.sort()
+            while nums:
+                if a < b:
+                    a += nums.pop()
+                else:
+                    b += nums.pop()
+            ans = min(ans, a * a + b * b + c * k)
+
+    print(ans if ans < inf else -1)

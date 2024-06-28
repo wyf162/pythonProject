@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-# @Time: 2024/6/25 17:06
-# @Author: yfwang
-# @File: 1970G2.py
-# graphs
+# -*- coding : utf-8 -*-
+# @Time: 2024/2/9 14:21
+# @Author: yefei.wang
+# @File: 1383A.py
 
 import sys
 import typing
@@ -76,65 +75,35 @@ class DSU:
 
 
 input = lambda: sys.stdin.readline().rstrip()
-sys.stdin = open('../input.txt', 'r')
+sys.stdin = open('../../input.txt', 'r')
 I = lambda: int(input())
 MI = lambda: map(int, input().split())
 GMI = lambda: map(lambda x: int(x) - 1, input().split())
 LI = lambda: list(MI())
-TI = lambda: tuple(MI())
 LGMI = lambda: list(GMI())
 YN = lambda x: print('YES' if x else 'NO')
-inf = 10 ** 18
+mod = 1000000007
+mod2 = 998244353
 
 tcn = I()
 for _tcn_ in range(tcn):
-    n, m, k = MI()
-    edges = [LGMI() for _ in range(m)]
-    ans = inf
-
-    uf = DSU(n)
-    for j in range(m):
-        uf.merge(*edges[j])
-    a, b = 0, 0
-    c = -1
-    nums = []
-    for group in uf.groups():
-        nums.append(len(group))
-        c += 1
-    nums.sort()
-    while nums:
-        if a < b:
-            a += nums.pop()
-        else:
-            b += nums.pop()
-    if a > 0 and b > 0:
-        ans = min(ans, a * a + b * b + c * k)
-
-    for i in range(m):
-        u, v = edges[i]
-        uf = DSU(n)
-        for j in range(m):
-            if i == j:
-                continue
-            uf.merge(*edges[j])
-        if uf.same(u, v):
-            continue
-        else:
-            a, b = uf.size(u), uf.size(v)
-            nums = []
-            c = 0
-            for group in uf.groups():
-                if uf.same(v, group[0]) or uf.same(u, group[0]):
-                    continue
-                else:
-                    nums.append(len(group))
-                    c += 1
-            nums.sort()
-            while nums:
-                if a < b:
-                    a += nums.pop()
-                else:
-                    b += nums.pop()
-            ans = min(ans, a * a + b * b + c * k)
-
-    print(ans if ans < inf else -1)
+    n = I()
+    s = list(input())
+    t = list(input())
+    ans = True
+    for a, b in zip(s, t):
+        if a > b:
+            ans = False
+            break
+    if ans is False:
+        print(-1)
+        continue
+    uf = DSU(20)
+    for a, b in zip(s, t):
+        i = ord(a) - ord('a')
+        j = ord(b) - ord('a')
+        uf.merge(i, j)
+    ans = 0
+    for gp in uf.groups():
+        ans += len(gp) - 1
+    print(ans)
