@@ -6,15 +6,14 @@
 import sys
 
 with open('./output.txt', 'r') as f:
-    answer = f.readlines()
+    out = f.readlines()
 
 with open('./jury.txt', 'r') as f:
     jury = f.readlines()
 
-n = len(answer)
+n = len(out)
 for i in range(n):
-    if jury[i] != answer[i]:
-        print(f'first diff in {i + 1}')
-        print(jury[i])
-        print(answer[i])
+    if jury[i] != out[i]:
+        print(f"differ in {i + 1} row")
+        print(f"expect {jury[i]} but find {out[i]}")
         break
