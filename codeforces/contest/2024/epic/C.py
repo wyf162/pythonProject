@@ -21,18 +21,7 @@ tcn = I()
 for _tcn_ in range(tcn):
     n = I()
     H = LI()
-    ans = 0
-    eq = 0
-    cur = 0
-    for i in range(n - 1, -1, -1):
-        if H[i] > cur:
-            cur = H[i]
-            eq = 0
-        elif H[i] == cur:
-            eq += 1
-        else:
-            ans += cur + eq
-            eq = 0
-            cur = H[i]
-    ans += cur + eq
+    ans = H[-1]
+    for i in range(n-2, -1, -1):
+        ans = max(ans + 1, H[i])
     print(ans)
