@@ -29,6 +29,7 @@
 | 期望DP    | [Assimilation IV](https://codeforces.com/problemset/problem/1525/E)                                         | todo 组合数学 期望DP     |
 |         | [Intercity Travelling](https://codeforces.com/problemset/problem/1009/E)                                    | 期望DP               |
 | 换根DP    | [Game on Tree](https://codeforces.com/contest/1970/problem/C3)                                              | game               |
+| 数位DP    | [Salazar Slytherin's Locket](https://codeforces.com/contest/855/problem/E)                                  | bitmasks           |
 
 ## Greedy
 
