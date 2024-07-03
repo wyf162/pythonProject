@@ -14,7 +14,8 @@
 |         | [Largest Path Value](https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/description/)     |
 | 树形DP    | [金明的预算方案](https://www.luogu.com.cn/problem/P1064)                                                           | 树形依赖背包             |
 |         | [选课](https://www.luogu.com.cn/record/127297160)                                                             | 树形DP 后序dfs 先选父节点   |
-|         | [在树上执行操作的最大分数](https://leetcode.cn/problems/maximum-score-after-applying-operations-on-a-tree/description/) |
+|         | [在树上执行操作的最大分数](https://leetcode.cn/problems/maximum-score-after-applying-operations-on-a-tree/description/) |                    |
+| CF802K  | [Send the Fool Further](https://codeforces.com/contest/802/problem/K)                                       | todo               |
 | 状态机DP   | [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/description)                        |                    |
 | 状态压缩    | [关灯问题](https://www.luogu.com.cn/problem/P2622)                                                              | 优先队列优化转移方程         |
 | CF1950G | [Shuffing Sangs](https://codeforces.com/contest/1950/problem/G)                                             | n^2*2^n(n=16)      |
