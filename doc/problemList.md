@@ -29,6 +29,7 @@
 | 矩阵乘法    | [Neural Network Country](https://codeforces.com/problemset/problem/852/B)                                   | 快速矩阵乘  todo        |
 | 期望DP    | [Assimilation IV](https://codeforces.com/problemset/problem/1525/E)                                         | todo 组合数学 期望DP     |
 |         | [Intercity Travelling](https://codeforces.com/problemset/problem/1009/E)                                    | 期望DP               |
+| CF1925D | [Good Trip](https://codeforces.com/problemset/problem/1925/D)                                               | 组合数学 期望DP          |
 | 换根DP    | [Game on Tree](https://codeforces.com/contest/1970/problem/C3)                                              | game               |
 | CF633F  | [The Chocolate Spree](https://codeforces.com/problemset/problem/633/F)                                      |                    |
 | CF1929D | [Sasha and a Walk in the City](https://codeforces.com/contest/1929/problem/D)                               | combinatorics lca  |
