@@ -30,6 +30,20 @@ E5 = 10 ** 5
 E9 = 10 ** 9
 E18 = 10 ** 18
 
-tcn = 10000
+tcn = 1
 print(tcn)
-make_graph(10)
+for _tcn_ in range(tcn):
+    n, q = 10, 10
+    cur = 0
+    print(n, q)
+    for i in range(n):
+        if i % 6 < 3:
+            cur += 1
+            print(1, random.randint(1, 100))
+        else:
+            x = random.randint(1, 100)
+            print(2, x)
+            cur *= (x + 1)
+    queries = [random.randint(1, cur) for _ in range(q)]
+    print(*queries)
+    print(cur < 10 ** 18)
