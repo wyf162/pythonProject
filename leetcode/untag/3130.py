@@ -41,5 +41,6 @@ fact = Factorial(1005, 10 ** 9 + 7)
 
 class Solution:
     def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        pass
 
 
