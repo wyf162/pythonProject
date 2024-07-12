@@ -34,7 +34,7 @@ def z_func(s):
 
 
 if __name__ == '__main__':
-    s = "abca"
+    s = "abcabc"
     ret1 = z_function(s)
     print(ret1)
     ret2 = z_func(s)

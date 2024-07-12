@@ -31,19 +31,24 @@ E9 = 10 ** 9
 E18 = 10 ** 18
 
 tcn = 1
-print(tcn)
+# print(tcn)
 for _tcn_ in range(tcn):
-    n, q = 10, 10
-    cur = 0
-    print(n, q)
-    for i in range(n):
-        if i % 6 < 3:
-            cur += 1
-            print(1, random.randint(1, 100))
-        else:
-            x = random.randint(1, 100)
-            print(2, x)
-            cur *= (x + 1)
-    queries = [random.randint(1, cur) for _ in range(q)]
-    print(*queries)
-    print(cur < 10 ** 18)
+    n = 5000
+    nums = [random.randint(1, 9) for i in range(n)]
+    print(n)
+    print(''.join(str(x) for x in nums))
+
+    # n, q = 10, 10
+    # cur = 0
+    # print(n, q)
+    # for i in range(n):
+    #     if i % 6 < 3:
+    #         cur += 1
+    #         print(1, random.randint(1, 100))
+    #     else:
+    #         x = random.randint(1, 100)
+    #         print(2, x)
+    #         cur *= (x + 1)
+    # queries = [random.randint(1, cur) for _ in range(q)]
+    # print(*queries)
+    # print(cur < 10 ** 18)
