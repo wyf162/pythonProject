@@ -49,9 +49,10 @@ class FenwickTree:
 tcn = I()
 for _tcn_ in range(tcn):
     n, x = MI()
-    a = LI()
+    A = LI()
     indices = list(range(n))
-    indices.sort(key=lambda x: a[x])
+    indices.sort(key=lambda i: A[i])
+    B = sorted(A)
     pos = [0] * n
     for i in range(n):
         pos[indices[i]] = i
@@ -65,8 +66,8 @@ for _tcn_ in range(tcn):
     for i in range(n):
         F.update(pos[i], i - n)
 
-        L = bisect.bisect_left(indices, lo - a[i], key=lambda x: a[x])
-        R = bisect.bisect_left(indices, hi - a[i], key=lambda x: a[x])
+        L = bisect.bisect_left(B, lo - A[i])
+        R = bisect.bisect_left(B, hi - A[i])
         if L == R:
             continue
         ans += (i + 1) * (F.query(R) - F.query(L))

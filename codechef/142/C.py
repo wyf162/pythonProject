@@ -21,6 +21,7 @@ inf = 0x3f3f3f3f
 tcn = I()
 for _tcn_ in range(tcn):
     n, m = MI()
-    c = n * m
-    ans = c // 4 * 6
-    print(ans)
+    if n == 2 or m == 2:
+        print((3 * n * m) // 2)
+    else:
+        print(n * m + 4)
