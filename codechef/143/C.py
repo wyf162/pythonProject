@@ -21,3 +21,17 @@ inf = 0x3f3f3f3f
 tcn = I()
 for _tcn_ in range(tcn):
     n = I()
+    a = [(10 ** 9 + 1, 0, 0)]
+    for i in range(n):
+        l, r = MI()
+        a.append((l, r, i))
+    a.sort()
+    ans, comp, mx = [0] * n, [], -1
+    for l, r, i in a:
+        if l >= mx:
+            for u in comp:
+                ans[u] = len(comp)
+            comp = []
+        comp.append(i)
+        mx = max(mx, r)
+    print(*ans)
