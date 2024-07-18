@@ -21,12 +21,12 @@ E18 = 10 ** 18
 #     print(7)
 #     print(*perm)
 
-print(120)
-P = [1, 2, 3, 4, 5]
-perms = itertools.permutations(P)
-for perm in perms:
-    print(5)
-    print(*perm)
+# print(120)
+# P = [1, 2, 3, 4, 5]
+# perms = itertools.permutations(P)
+# for perm in perms:
+#     print(5)
+#     print(*perm)
 
 # tcn = 1
 # # print(tcn)
@@ -39,3 +39,12 @@ for perm in perms:
 #     print(m)
 #     for i in range(m):
 #         print(random.randint(1, 100), random.randint(1, 100), random.randint(1, n))
+
+
+tcn = 1
+print(tcn)
+for _tcn_ in range(tcn):
+    n = 100
+    print(n)
+    nums = [i + 1 for i in range(n)]
+    print(*nums)
