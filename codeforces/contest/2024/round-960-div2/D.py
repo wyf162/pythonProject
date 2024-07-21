@@ -3,9 +3,7 @@
 # @Author: yefei.wang
 # @File: D.py
 
-import copy
 import sys
-from collections import Counter
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../../input.txt', 'r')
@@ -23,12 +21,19 @@ tcn = I()
 for _tcn_ in range(tcn):
     n = I()
     A = LI()
-    cover = 0
-    tot = 0
+    dp = [0] * (n + 1)
+
+    mi = [n, n]
     for i in range(n):
-        if A[i] <= cover:
-            continue
-        if A[i] >= 5:
-            tot += 1
+        dp[i + 1] = dp[i] + 1
+        if A[i] == 0:
+            dp[i + 1] = min(dp[i + 1], dp[i])
+        if A[i] <= 2:
+            dp[i + 1] = min(dp[i + 1], i + 1 + mi[i % 2])
 
+        if A[i] <= 2:
+            mi[1 - i % 2] = min(mi[1 - i % 2], dp[i] - i - 1)
+        elif A[i] > 4:
+            mi[0] = mi[1] = n
 
+    print(dp[n])
