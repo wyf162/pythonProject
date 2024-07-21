@@ -30,14 +30,12 @@ E5 = 10 ** 5
 E9 = 10 ** 9
 E18 = 10 ** 18
 
-tcn = 1
-# print(tcn)
+tcn = 100
+print(tcn)
 for _tcn_ in range(tcn):
-    n = 5000
-    nums = [random.randint(1, 9) for i in range(n)]
+    n = 100
     print(n)
-    print(''.join(str(x) for x in nums))
-
+    print(*[random.randint(1, 10) for _ in range(n)])
     # n, q = 10, 10
     # cur = 0
     # print(n, q)
