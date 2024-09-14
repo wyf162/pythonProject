@@ -22,17 +22,15 @@ class Solution:
                     return False
             return True
 
-        L, R = 0, 2*10**9+5
-        while L<=R:
-            mid = (L+R)//2
+        L, R = 0, 2 * 10 ** 9 + 5
+        while L <= R:
+            mid = (L + R) // 2
             if check(mid):
                 ans = mid
                 L = mid + 1
             else:
                 R = mid - 1
         return ans
-
-
 
 
 if __name__ == '__main__':
