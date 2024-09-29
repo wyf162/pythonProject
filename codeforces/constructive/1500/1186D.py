@@ -7,13 +7,15 @@ import sys
 
 input = lambda: sys.stdin.readline().rstrip()
 sys.stdin = open('../../input.txt', 'r')
-I = lambda: int(input())
-MI = lambda: map(int, input().split())
-GMI = lambda: map(lambda x: int(x) - 1, input().split())
-LI = lambda: list(MI())
-TI = lambda: tuple(MI())
-LGMI = lambda: list(GMI())
-YN = lambda x: print('YES' if x else 'NO')
+def I(): return int(input())
+def MI(): return map(int, input().split())
+def GMI(): return map(lambda x: int(x) - 1, input().split())
+def LI(): return list(MI())
+def TI(): return tuple(MI())
+def LGMI(): return list(GMI())
+def YN(x): return print('YES' if x else 'NO')
+
+
 mod = 1000000007
 mod2 = 998244353
 
