@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "ms-python.autopep8",
+    "python.formatting.autopep8Args": [
+        "--aggressive",
+        "--max-line-length=120",
+        "--ignore=E402",
+        "--exclude=venv",
+        "--ignore-local-config"
+    ]
+}
